@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>UserDash | Register</title>
+		<title>Register</title>
 		<meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -46,7 +46,6 @@
 	<body> 
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
-
 
             <!-- Registration -->
             <div id="errors"><?= $this->session->flashdata('errors') ?></div>

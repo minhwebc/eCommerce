@@ -18,11 +18,6 @@
 	<body> 
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
-
-            <!-- Hero Unit -->
-            <div class="jumbotron">
-                  <h1>Welcome to Dojo eCommerce</h1>
-            </div>
         </div> 
     </body>
 </html>
