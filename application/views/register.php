@@ -49,7 +49,7 @@
 
             <!-- Registration -->
             <div id="errors"><?= $this->session->flashdata('errors') ?></div>
-            <form id="register" method="post" action="registerUser">
+            <form id="register" method="post" action="users/registerUser">
                 <h1>Registration</h1>
                 Email: <input type="text" name="email"><br>
                 First name: <input type="text" name="first_name"><br>

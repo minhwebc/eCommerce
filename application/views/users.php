@@ -20,7 +20,7 @@
 	</head>
 	<body> 
         <div class="container">
-            <?php $this->load->view('partials/nav'); ?>
+            <?php $this->load->view('partials/nav-admin'); ?>
 
             <!-- User Table -->
             <h1>All Users</h1>

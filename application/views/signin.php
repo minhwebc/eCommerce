@@ -49,7 +49,7 @@
 
             <!-- Sign in -->
             <div id="errors"><?= $this->session->flashdata('errors') ?></div>
-            <form id="login" method="post" action="/main/signinUser">
+            <form id="login" method="post" action="/users/signinUser">
                 <h1>Sign in</h1>
                 Email: <input type="text" name="email"><br>
                 Password: <input type="text" name="password"><br>

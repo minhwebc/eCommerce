@@ -6,6 +6,7 @@ class users extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('user');
+        $this->output->enable_profiler();
     } 
     
 	public function index() {
@@ -22,11 +23,11 @@ class users extends CI_Controller {
         $user = $this->user->get_user_by_email($this->input->post('email'));
 
         if (md5($this->input->post('password')) == $user['password'] && $this->form_validation->run() == true){
-            $this->session->set_userdata($user);
-            if ($this->session->userdata()['level'] == '9'){
-                    redirect ('/dashboard/admin');
+            $this->session->set_userdata(array('id' => $user['id'], 'admin' => $user['admin']));
+            if ($this->session->userdata('admin')){
+                    redirect ('/dashboard/users');
             }
-            redirect('/dashboard');
+            redirect('/');
         } else {
             $this->session->set_flashdata('errors', 'You entered an invalid email or password'); 
             redirect('signin');
@@ -51,8 +52,11 @@ class users extends CI_Controller {
         } else {
             if($this->user->add_user($this->input->post())) {
                 $user = $this->user->get_user_by_email($this->input->post('email'));
-                $this->session->set_userdata($user['id']);
-                redirect('/dashboard');
+                $this->session->set_userdata(array('id' => $user['id'], 'admin' => $user['admin']));
+                if ($this->session->userdata('admin')){
+                    redirect ('/dashboard/users');
+                }
+                redirect('/');
             }           
         }
     }

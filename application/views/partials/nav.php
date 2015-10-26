@@ -28,7 +28,7 @@
                             <li><a href="signin">Sign In</a></li>
                             <li><a href="register">Register</a></li>
                         <?php } else { ?>
-                            <li><a href="/main/logoff">Log off</a></li>
+                            <li><a href="/logoff">Log off</a></li>
                         <?php } ?>
                     </ul>
                 </li> 

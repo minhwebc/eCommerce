@@ -3,6 +3,9 @@
 class user extends CI_model {
 
     function add_user($user) {   
+        $allAdmins = $this->db->query("select * from users where admin = true")->result_array();
+        empty($allAdmins) ? $admin = true : $admin = false;
+        
         $query = "insert into users (email, first_name, last_name, password, admin, created_at, updated_at)
                     values (?, ?, ?, ?, ?, NOW(), NOW())";
                     
@@ -13,7 +16,7 @@ class user extends CI_model {
     }    
     
     function get_user_by_email($email) {
-        $query = "select * from users where email = ?";
+        $query = "select id, password, admin from users where email = ?";
         $values = array($email);
         
         return $this->db->query($query, $values)->row_array();
@@ -26,6 +29,9 @@ class user extends CI_model {
         return $this->db->query($query, $values)->row_array();
     }
 
+    function get_all_users() {
+        return $this->db->query("select * from users")->result_array;   
+    }
 }
 
 ?>
