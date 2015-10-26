@@ -1,0 +1,71 @@
+.navbar {
+    background-color: white;  
+}
+
+.update {
+    display: inline-block;
+    margin: 0px 40px;
+}
+
+    .update input {
+        margin-bottom: 10px;
+    }
+
+.btn.add {
+    float: right;
+    margin-top: 20px;
+}
+
+#errors {
+    color: red; 
+    font-size: smaller;
+    font-family: initial;
+}
+
+#errors p {
+    margin: 0px;
+}
+
+legend {
+    border: none;
+    margin-bottom: 0px;
+}
+
+    legend.edit_information{
+        width: 150px;
+    }
+
+    legend.change_password {
+        width: 180px;
+    }
+
+fieldset.update_info {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 20px;
+}
+
+form {
+    display: inline-block; 
+    width: 250px;
+    vertical-align: top;
+}
+
+input {
+    display: block;
+    width: 210px;
+}
+
+.update .button {
+    float: right;
+    width: 140px;
+    margin-top: 10px;
+}
+
+h1 {
+    margin-left:40px;   
+    font-size: 30px;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+            
