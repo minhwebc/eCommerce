@@ -37,7 +37,6 @@ class main extends CI_Controller {
         $this->load->view('register');  
     }
     
-    
     public function registerUser(){        
         $this->load->library("form_validation");
 		$this->form_validation->set_rules("first_name", "First Name", "trim|required");
@@ -52,10 +51,7 @@ class main extends CI_Controller {
         } else {
             if($this->user->add_user($this->input->post())) {
                 $user = $this->user->get_user_by_email($this->input->post('email'));
-                $this->session->set_userdata($user);
-                if ($this->session->userdata($user)['level'] == 9){
-                    redirect ('/dashboard/admin');
-                }
+                $this->session->set_userdata($user['id']);
                 redirect('/dashboard');
             }           
         }

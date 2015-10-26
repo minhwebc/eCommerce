@@ -3,7 +3,9 @@
 	<head>
 		<title>Home</title>
 		<meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/bootstrap.min.css">         
+        <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>      
         <style type="text/css">
             
             .navbar {

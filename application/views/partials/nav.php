@@ -20,11 +20,18 @@
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-                <?php if ($this->session->userdata('email') == NULL) { ?>
-                    <li><a href="signin">Sign In</a></li>
-                <?php } else { ?>
-                    <li><a href="/main/logoff">Log off</a></li>
-                <?php } ?>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                         aria-haspopup="true" aria-expanded="false">Your Account <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <?php if ($this->session->userdata('email') == NULL) { ?>
+                            <li><a href="signin">Sign In</a></li>
+                            <li><a href="register">Register</a></li>
+                        <?php } else { ?>
+                            <li><a href="/main/logoff">Log off</a></li>
+                        <?php } ?>
+                    </ul>
+                </li> 
             </ul>
         </div>
     </div>
