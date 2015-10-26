@@ -43,10 +43,9 @@
 	</head>
 	<body> 
         <div class="container">
-            <?php $this->load->view('nav'); ?>
+            <?php $this->load->view('partials/nav'); ?>
 
-        
-            <!-- Log in -->
+            <!-- Sign in -->
             <div id="errors"><?= $this->session->flashdata('errors') ?></div>
             <form id="login" method="post" action="/main/signinUser">
                 <h1>Sign in</h1>

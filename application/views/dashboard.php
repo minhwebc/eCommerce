@@ -18,7 +18,7 @@
 	</head>
 	<body> 
         <div class="container">
-            <?php $this->load->view('nav'); ?>
+            <?php $this->load->view('partials/nav'); ?>
 
             <!-- User Table -->
             <h1>All Users</h1>
