@@ -71,7 +71,7 @@ class products extends CI_Controller
                 $exist = true;
                 $products[$count] = $newProduct;
                 $this->session->set_userdata('products', $products);
-                $this->load->view('addtocart', array('newProduct' => $newProduct));
+                redirect('/products/add/' . $newProduct['id']);            
             }
             $count++;
         }
@@ -85,9 +85,14 @@ class products extends CI_Controller
         //push it into the session cart
         array_push($products, $newProduct); 
         $this->session->set_userdata('products', $products);
-        $this->load->view('addtocart', array('newProduct' => $newProduct));
+        redirect('/products/add/' . $newProduct['id']);
     }
 
+    public function add($id) {
+        $recentlyAdded = $this->product->get_product_by_id($id);
+        $this->load->view('addtocart', array('newProduct' => $recentlyAdded));
+    }
+    
     //procceed to checkout method
     public function cart(){
         $this->load->view('checkout');
