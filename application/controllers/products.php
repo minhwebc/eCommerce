@@ -56,6 +56,11 @@ class products extends CI_Controller
         foreach ($products as $product) { //traversing through the products array to find if the product being added already exist in the cart
             if ($product['name'] == $this->input->post('name')) { //if it exists, add the new amount to the amount in the array
                 $product['amount'] += $this->input->post('amount');
+                $newProduct = array(
+                    'id'       => $product['id'],
+                    'name'     => $product['name'],
+                    'price'    => $product['price'],
+                    'quantity' => $product['amount']);
                 $existed = true;
                 break;
             }
