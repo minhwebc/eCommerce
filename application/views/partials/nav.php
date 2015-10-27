@@ -31,7 +31,7 @@
                         <?php } ?>
                     </ul>
                 </li> 
-                <li id="cart"><a href="#">Shopping Cart (0)</a></li>
+                <li id="cart"><a href="#">Shopping Cart (<?= $this->session->userdata('cart_amount') ?>)</a></li>
             </ul>
   
         </div>

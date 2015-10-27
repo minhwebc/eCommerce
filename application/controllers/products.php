@@ -11,16 +11,19 @@ class products extends CI_Controller
         parent::__construct();
         $this->output->enable_profiler();
         $this->load->model('product');
+        
+            
+        if ($this->session->userdata('cart_amount') == NULL && $this->session->userdata('products') == NULL) {
+            $this->session->set_userdata('cart_amount', 0);
+            $this->session->set_userdata('products', array()); 
+            //set the products to an empty array so later we can push in new array of products as the users
+            //orders more
+        }
+
     }
     
     public function index() {
-        
-        if (!($this->session->userdata('cart_amount')) && !($this->session->userdata('products'))) {
-            $this->session->userdata('cart_amount', 0);
-            $this->session->userdata('products', array()); //set the products to an empty array so later we can push in new array of products as the users
-            //orders more
-        }
-        
+
         $products = $this->product->get_all_products();
         $this->load->view('index', array(
             "products" => $products
@@ -53,18 +56,24 @@ class products extends CI_Controller
         $this->session->set_userdata('cart_amount', $totalAmount);
         $products = $this->session->userdata('products');
         $existed  = false; //added or not
-        foreach ($products as $product) { //traversing through the products array to find if the product being added already exist in the cart
-            if ($product['name'] == $this->input->post('name')) { //if it exists, add the new amount to the amount in the array
+        $count = 0;
+        foreach ($products as $product) { //traversing through the products array to find if the product being added already exist in the cart         
+            if ($product['name'] == $this->input->post('name')) { 
                 $product['amount'] += $this->input->post('amount');
                 $newProduct = array(
                     'id'       => $product['id'],
                     'name'     => $product['name'],
                     'price'    => $product['price'],
-                    'quantity' => $product['amount']);
+                    'amount'   => $product['amount']);
                 $existed = true;
+                $products[$count] = $newProduct;
+                $this->session->set_userdata('products', $products);
                 break;
             }
+            $count++;
         }
+        
+        
         //if it doesnt exist
         //create an array with the infomation of the product we just added to cart
         if ($existed == false) {
@@ -72,12 +81,12 @@ class products extends CI_Controller
                 'id'       => $this->input->post('product_id'),
                 'name'     => $this->input->post('name'),
                 'price'    => $this->input->post('price'),
-                'quantity' => $this->input->post('amount')
+                'amount' => $this->input->post('amount')
             );
             array_push($products, $newProduct); //push it into the session cart
             $this->session->set_userdata('products', $products);
         }
-        $this->load->view('added_product', $newProduct); //load the views files with the new product array being pushed onto it
+        $this->load->view('addtocart', array('newProduct' => $newProduct)); //load the views files with the new product array being pushed onto it
     }
 
     //procceed to checkout method

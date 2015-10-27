@@ -52,16 +52,21 @@
                 <div class="col-md-4 col-md-offset-2">
                     <img src="/assets/images/<?= $product['source'] ?>">
                 </div>
+                
+                <?php var_dump($product); ?>
                 <div class="col-md-4">
                     <h1><?= $product['name'] ?></h1>
                     <p><?= $product['description'] ?></p>
-                    <form>
-                        <select class="form-control">
-                         <option>1 Sticker Set ($<?= $product['price'] ?>)</option>
+                    <form action="/products/update_cart/" method="post">
+                        <select name="amount" class="form-control">
+                         <option value="1">1 Sticker Set ($<?= $product['price'] ?>)</option>
                         <?php for ($i = 2; $i <= 4; $i++) { ?>
-                            <option><?= $i ?> Sticker Sets ($<?= $product['price'] * $i ?>)</option>
+                            <option value="<?= $i ?>"><?= $i ?> Sticker Sets ($<?= $product['price'] * $i ?>)</option>
                         <?php } ?>
                         </select>
+                        <input type="hidden" name="name" value="<?= $product['name'] ?>">
+                        <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
+
                         <button type="submit" class="btn btn-default">Add to Cart</button>
                     </form>
                 </div>
