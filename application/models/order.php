@@ -3,9 +3,12 @@
 class order extends CI_model {
     
     function get_all_orders() {
-        $query = "select * from orders"; 
-        return $this->db->query($query)->result_array();
+        $query = "SELECT * from orders where orders.user_id = ?";
+        $value = $this->session->userdata('user_id'); 
+    	return $this->db->query($query, $values)->result_array();
     }
+
+
     
 }
 
