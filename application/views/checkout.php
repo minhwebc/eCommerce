@@ -26,8 +26,15 @@
             	background: #8AC8FF;
             	color: #ffffff;
             	position: relative;
-            
             }
+
+            #continue{
+            	color: white;
+            }
+            #total{
+            	text-align: right;
+            }
+
         </style>
 	<script>
 		function sameAsShipping(){
@@ -55,41 +62,33 @@
 
                 <th>Item</th>
                 <th>Price</th>
-                <th>Quality</th>
+                <th>Quantity</th>
                 <th>Total</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                
-                <td>Donuts</td>
-                <td>Carter</td>
-                <td>johncarter@mail.com</td>
-                <td>Lorem ipsum dolor sit amet…</td>
-            </tr>
-            <tr>
-
-                <td>Peter</td>
-                <td>Parker</td>
-                <td>peterparker@mail.com</td>
-                <td>Vestibulum consectetur scelerisque…</td>
-            </tr>
-            <tr>
- 
-                <td>John</td>
-                <td>Rambo</td>
-                <td>johnrambo@mail.com</td>
-                <td>Integer pulvinar leo id risus…</td>
-            </tr>
+            <?php 
+            	$total = 0;
+            	foreach($items as $item){
+            ?>
+            	<tr>
+	            	<td><?= $item['name'] ?></td>
+	            	<td>$<?= $item['price'] ?></td>
+	            	<td><?= $item['amount'] ?></td>
+	            	<td>$<?php $total += $item['price']*$item['amount']; echo $item['price']*$item['amount']; ?></td>
+	            </tr>
+            <?php } ?>
         </tbody>
     </table>
+    <h3 id="total">Total: $<?= $total ?></h3>
+    <button class="btn btn-success pull-right"><a id='continue' href="/">Continue Shopping</a></button>
 </div>
 
-		<h3> Shipping Information</h3>
+		<h2> Shipping Information</h2>
 
 		<p>Click to <a href ="/users/signin"><b> sign in </b></a> or continue below as a guest: </p>
 		 
-		<form class="form-horizontal">
+		<form class="form-horizontal" action="orders/pay" method="post">
 		  <div class="form-group">
 		    <label for="firstname" class="col-sm-2 control-label">First Name:</label>
 		    <div class="col-sm-10">
@@ -138,17 +137,13 @@
 		      <input type="text" class="form-control" id="zipcode" placeholder="Zipcode...">
 		    </div>
 		  </div>
-		</form>
 
-		<h3> Billing Information</h3>
+		<h2> Billing Information</h2>
 
 		<div class="checkbox">
-		    <label>
-		      <input type="checkbox" id="sameas" onclick="sameAsShipping()">
-     		 Same as Shipping</label>
+		    <input type="checkbox" id="sameas" onclick="sameAsShipping()"><label>Same as Shipping</label>
 		</div>
 
-		<form class="form-horizontal">
 		  <div class="form-group">
 		    <label for="firstname_b" class="col-sm-2 control-label">First Name:</label>
 		    <div class="col-sm-10">

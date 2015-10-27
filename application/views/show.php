@@ -53,7 +53,6 @@
                     <img src="/assets/images/<?= $product['source'] ?>">
                 </div>
                 
-                <?php var_dump($product); ?>
                 <div class="col-md-4">
                     <h1><?= $product['name'] ?></h1>
                     <p><?= $product['description'] ?></p>

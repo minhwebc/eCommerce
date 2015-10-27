@@ -18,8 +18,8 @@ class order extends CI_model {
     	$this->db->query($query, $values);
     	$ship_id = $this->db->insert_id();//ship id to be inserted into order table
     	$query = "INSERT INTO shipping_address(user_id, shipping_id) values (?,?)";
-    	$this->db->query($query, $values);
     	$values = array($this->session->userdata('user_id'), $ship_id);
+    	$this->db->query($query, $values);
 
     	//insert billing address
 		$query = "INSERT INTO addresses (first_name, last_name, address, address_2, city, state, zipcode, created_at, updated_at)

@@ -62,7 +62,7 @@ class products extends CI_Controller
         
         //traversing through the products array to find if the product being added already exist in the cart
         foreach ($products as $product) {          
-            if ($product['id'] == $this->input->post('id')) { 
+            if ($product['id'] == $this->input->post('product_id')) { 
                 $product['amount'] += $this->input->post('amount');
                 $newProduct = array(
                     'id'       => $product['id'],
@@ -95,7 +95,16 @@ class products extends CI_Controller
     
     //procceed to checkout method
     public function cart(){
-        $this->load->view('checkout');
+        $products = $this->session->userdata('products');
+        $items = array();
+        foreach($products as $product){
+            $info = $this->product->get_product_by_id($product['id']);
+            $item = array('name' => $info['name'],
+                        'price' => $info['price'],
+                        'amount' => $product['amount']);
+            array_push($items, $item);
+        }
+        $this->load->view('checkout', array('items'=>$items));
     }
 
     public function find(){
