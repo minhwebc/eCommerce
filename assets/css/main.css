@@ -5,7 +5,8 @@
 }
 
 .navbar.header {
-    height: 100px; 
+    height: 100%; 
+    padding-bottom: 20px;
     margin-bottom: 20px;
 }
 
@@ -27,6 +28,7 @@
 
 #nav-right {
     margin-top: 25px;
+    display: inline-block;
 }
 
 #cart {
