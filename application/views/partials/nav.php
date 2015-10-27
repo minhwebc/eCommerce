@@ -1,14 +1,16 @@
 <!-- Navigation -->
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
+<nav class="navbar header navbar-default">
+    <div class="container-fluid ">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Dojo eCommerce</a>
+            <a class="navbar-brand" href="#">
+                <img alt="logo" src="/assets/images/logo.png">
+            </a>
+            <a class="navbar-brand" id="company_name" href="/">Sticker <span id="black">Black</span> Market</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
              <ul class="nav navbar-nav">
-                 <li><a href="#">Products</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" id="nav-right">
                 <form class="navbar-form navbar-left" role="search">
                      <div class="form-group">
                          <input type="text" class="form-control" placeholder="Find a product...">
@@ -20,8 +22,8 @@
                          aria-haspopup="true" aria-expanded="false">Your Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <?php if (!$this->session->userdata('id')) { ?>
-                            <li><a href="signin">Sign In</a></li>
-                            <li><a href="register">Register</a></li>
+                            <li><a href="/users/signin">Sign In</a></li>
+                            <li><a href="/users/register">Register</a></li>
                         <?php } else { ?>
                             <li><a href="/orders">Your Orders</a></li>
                             <li><a href="/users/account">Account Settings</a></li>
@@ -29,7 +31,9 @@
                         <?php } ?>
                     </ul>
                 </li> 
+                <li id="cart"><a href="#">Shopping Cart (0)</a></li>
             </ul>
+  
         </div>
     </div>
 </nav>

@@ -57,8 +57,9 @@
                     <p><?= $product['description'] ?></p>
                     <form>
                         <select class="form-control">
-                        <?php for ($i = 1; $i <= 4; $i++) { ?>
-                            <option><?= $i ?> Sticker Set ($<?= $product['price'] * $i ?>)</option>
+                         <option>1 Sticker Set ($<?= $product['price'] ?>)</option>
+                        <?php for ($i = 2; $i <= 4; $i++) { ?>
+                            <option><?= $i ?> Sticker Sets ($<?= $product['price'] * $i ?>)</option>
                         <?php } ?>
                         </select>
                         <button type="submit" class="btn btn-default">Add to Cart</button>

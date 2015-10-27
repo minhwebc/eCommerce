@@ -1,3 +1,34 @@
 .navbar {   
     background-color: white;
+    margin-bottom: 40px;
+
+}
+
+.navbar.header {
+    height: 100px; 
+    margin-bottom: 20px;
+}
+
+.navbar.header img {
+    width: 150px;
+}
+
+#company_name {
+    margin-top: 25px;
+    font-size: 20pt;
+    color: #2CE586;
+    font-family: fantasy;
+}
+
+#black {
+    color: black;
+    font-weight: bold;
+}
+
+#nav-right {
+    margin-top: 25px;
+}
+
+#cart {
+    text-align: right;
 }
