@@ -46,7 +46,7 @@
 
             <!-- Registration -->
             <div id="errors"><?= $this->session->flashdata('errors') ?></div>
-            <form id="register" method="post" action="users/registerUser">
+            <form id="register" method="post" action="/users/registerUser">
                 <h1>Registration</h1>
                 Email: <input type="text" name="email"><br>
                 First name: <input type="text" name="first_name"><br>
@@ -56,7 +56,7 @@
                 <input type='hidden' name='action' value='register'>
                 <input class="button" type="submit" value="Submit"/>
             </form>
-            <p class="margin-left"><a href="signin">Already have an account? Login!</a></p>
+            <p class="margin-left"><a href="/users/signin">Already have an account? Login!</a></p>
             
         </div>
     </body>

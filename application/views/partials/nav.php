@@ -2,7 +2,7 @@
 <nav class="navbar header navbar-default">
     <div class="container-fluid ">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img alt="logo" src="/assets/images/logo.png">
             </a>
             <a class="navbar-brand" id="company_name" href="/">Sticker <span id="black">Black</span> Market</a>

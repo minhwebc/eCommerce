@@ -57,7 +57,7 @@
                 <input type='hidden' name='action' value='login'>
                 <input class="formbutton btn btn-default" type="submit" value="Submit">
             </form>
-            <p class="margin-left"><a href="register">Don't have an account? Register!</a></p>
+            <p class="margin-left"><a href="/users/register">Don't have an account? Register!</a></p>
             
         </div>
     </body>
