@@ -19,17 +19,19 @@ class product extends CI_model {
     	return $this->db->query($query, $values)->row_array();
     }
 
-    function get_similar_product($category_id, $id) {
-    	$query="SELECT * FROM categories
-    			left join categorization
-    			on categories.id = categorization.category_id
-    			left join products
-    			on products.id = categorization.product_id
+    function get_similar_products($id) {
+    	$query="SELECT * from products 
+                join categorization 
+                on categorization.product_id = products.id 
+                join images on images.product_id = products.id
+                where categorization.category_id in (
+                select categorization.category_id from products 
+                join categorization 
+                on categorization.product_id = products.id
                 join images
-                on products.id = images.product_id
-    			where categories.id = ? and  products.id != ?
+                where categorization.product_id = ?) AND products.id != ?
     			limit 4";
-    	$values = array($category_id, $id);
+    	$values = array($id, $id);
     	return $this->db->query($query, $values)->result_array();
     }
 
