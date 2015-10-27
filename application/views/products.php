@@ -40,7 +40,7 @@
                     <td><?= $detail['name'] ?></a></td>
                     <td><?= $detail['price'] ?></td>
                     <td>250</td>
-                    <td>Edit | Delete></td>
+                    <td><a href="/products/edit/<?= $product['id']?>">Edit</a>Edit | Delete</td>
                 </tr>
                 <?php } ?>
             </table>

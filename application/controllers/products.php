@@ -69,7 +69,7 @@ class products extends CI_Controller
         //create an array with the infomation of the product we just added to cart
         if ($existed == false) {
             $newProduct = array(
-                'id'       => $this->input->post('product_id');
+                'id'       => $this->input->post('product_id'),
                 'name'     => $this->input->post('name'),
                 'price'    => $this->input->post('price'),
                 'quantity' => $this->input->post('amount')
@@ -89,6 +89,8 @@ class products extends CI_Controller
         $products = $this->product->find($this->input->post());
         $this->load->view('search_result', array('products'=>$products));
     }
+
+
 }
 
 ?>

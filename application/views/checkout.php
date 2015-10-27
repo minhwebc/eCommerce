@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Shipping and Billing</title>
 	<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
         <style type="text/css">
@@ -12,18 +13,19 @@
                 background-color: white;
                 border: 1px solid e7e7e7;
             }
-
+		
           .form-horizontal input {
           	width: 350px;
           }
 
-            .form-cc{
-            	width: 600px;
+            .form-cc input{
+            	width: 350px;
             }
 
             .btn-default{
             	background: #8AC8FF;
             	color: #ffffff;
+            	position: relative;
             
             }
         </style>
@@ -44,7 +46,45 @@
 <body>
 	<div class="container">
             <?php $this->load->view('partials/nav'); ?>
-		
+	
+	<h2> Shopping cart</h2>
+	<div class="table-responsive"> 
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quality</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <td>Donuts</td>
+                <td>Carter</td>
+                <td>johncarter@mail.com</td>
+                <td>Lorem ipsum dolor sit amet…</td>
+            </tr>
+            <tr>
+
+                <td>Peter</td>
+                <td>Parker</td>
+                <td>peterparker@mail.com</td>
+                <td>Vestibulum consectetur scelerisque…</td>
+            </tr>
+            <tr>
+ 
+                <td>John</td>
+                <td>Rambo</td>
+                <td>johnrambo@mail.com</td>
+                <td>Integer pulvinar leo id risus…</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 		<h3> Shipping Information</h3>
 
 		<p>Click to <a href ="/users/signin"><b> sign in </b></a> or continue below as a guest: </p>
@@ -53,7 +93,7 @@
 		  <div class="form-group">
 		    <label for="firstname" class="col-sm-2 control-label">First Name:</label>
 		    <div class="col-sm-10">
-		      <input type="email" class="form-control" id="first_name" placeholder="First name...">
+		      <input type="text" class="form-control" id="first_name" placeholder="First name...">
 		    </div>
 		  </div>
 
