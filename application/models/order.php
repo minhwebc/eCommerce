@@ -8,8 +8,10 @@ class order extends CI_model {
     	return $this->db->query($query, $values)->result_array();
     }
 
-
-    
+    function insert_order($info) {
+    	if($info)
+    	$query = "INSERT INTO orders (status, created_at, updated_at)"
+    }
 }
 
 ?>
