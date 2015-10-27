@@ -15,8 +15,8 @@ class products extends CI_Controller
     
     public function index()
     {
-        if (!($this->session->userdata('cart_ammount')) && !($this->session->userdata('products'))) {
-            $this->session->userdata('cart_ammount', 0);
+        if (!($this->session->userdata('cart_amount')) && !($this->session->userdata('products'))) {
+            $this->session->userdata('cart_amount', 0);
             $this->session->userdata('products', array()); //set the products to an empty array so later we can push in new array of products as the users
             //orders more
         }
@@ -30,8 +30,8 @@ class products extends CI_Controller
     {
         
         $product       = $this->product->get_product_by_id($id);
-        $catergory     = $product['catergory_id']; //get the catergory of that product so we can get products with the same catergory
-        $same_products = $this->product->get_similar_product($catergory); //get those products
+        $category     = $product['category_id']; //get the category of that product so we can get products with the same category
+        $same_products = $this->product->get_similar_product($category); //get those products
         $this->load->view('show', array(
             'product' => $product,
             'similar products' => $same_products
