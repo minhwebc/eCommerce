@@ -38,6 +38,8 @@ class product extends CI_model {
     	$values = $start;
     	return $this->db->query($query, $values)->result_array();
     }
+
+    public function get_products_by_id()
  
 }
 

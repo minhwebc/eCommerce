@@ -31,7 +31,7 @@ class products extends CI_Controller
     {
         
         $product       = $this->product->get_product_by_id($id);
-        $category     = $product['category_id']; //get the category of that product so we can get products with the same category
+        $category      = $product['category_id']; //get the category of that product so we can get products with the same category
         $same_products = $this->product->get_similar_product($category, $id); //get those products
         $this->load->view('show', array(
             'product' => $product,
@@ -56,12 +56,6 @@ class products extends CI_Controller
         foreach ($products as $product) { //traversing through the products array to find if the product being added already exist in the cart
             if ($product['name'] == $this->input->post('name')) { //if it exists, add the new amount to the amount in the array
                 $product['amount'] += $this->input->post('amount');
-                $newProduct = array(
-                    'name' => $this->input->post('name'),
-                    'price' => $this->input->post('price'),
-                    'quantity' => $product['amount']
-                );
-                $this->session->set_userdata('products', $products); //added then reset the products
                 $existed = true;
                 break;
             }
@@ -70,8 +64,9 @@ class products extends CI_Controller
         //create an array with the infomation of the product we just added to cart
         if ($existed == false) {
             $newProduct = array(
-                'name' => $this->input->post('name'),
-                'price' => $this->input->post('price'),
+                'id'       => $this->input->post('product_id');
+                'name'     => $this->input->post('name'),
+                'price'    => $this->input->post('price'),
                 'quantity' => $this->input->post('amount')
             );
             array_push($products, $newProduct); //push it into the session cart
@@ -83,6 +78,11 @@ class products extends CI_Controller
     //procceed to checkout method
     public function cart(){
         $this->load->view('checkout');
+    }
+
+    public function find(){
+        $products = $this->product->find($this->input->post());
+        $this->load->view('search_result', array('products'=>$products));
     }
 }
 
