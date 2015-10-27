@@ -13,13 +13,14 @@ class products extends CI_Controller
         $this->load->model('product');
     }
     
-    public function index()
-    {
+    public function index() {
+        
         if (!($this->session->userdata('cart_amount')) && !($this->session->userdata('products'))) {
             $this->session->userdata('cart_amount', 0);
             $this->session->userdata('products', array()); //set the products to an empty array so later we can push in new array of products as the users
             //orders more
         }
+        
         $products = $this->product->get_all_products();
         $this->load->view('index', array(
             "products" => $products

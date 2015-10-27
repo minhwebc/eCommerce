@@ -4,7 +4,7 @@
 class product extends CI_model {
     
     function get_all_products() {
-        $query = "SELECT * from products"; 
+        $query = "select * from products join images on images.product_id = products.id"; 
         return $this->db->query($query)->result_array();
     }
     
