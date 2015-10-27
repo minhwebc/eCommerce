@@ -35,5 +35,6 @@
 	<div class="container">
             <?php $this->load->view('partials/nav'); 
             var_dump($newProduct); ?>
+        <div
     </div>
 </body>

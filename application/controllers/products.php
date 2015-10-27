@@ -49,44 +49,43 @@ class products extends CI_Controller
         $this->load->view('page', array('products'=> $products));
     }
     
-    public function update_cart()
-    {
-        $amount      = $this->session->userdata('cart_amount');
-        $totalAmount = $amount + $this->input->post('amount'); //add the new amount to the shopping cart
+    public function update_cart() {
+        //updates the amount of items in the cart
+        $amount = $this->session->userdata('cart_amount');
+        $totalAmount = $amount + $this->input->post('amount');
         $this->session->set_userdata('cart_amount', $totalAmount);
+        
+        //updates the IDs and quantity of products in the cart
         $products = $this->session->userdata('products');
-        $existed  = false; //added or not
+        $exist  = false; //added or not
         $count = 0;
-        foreach ($products as $product) { //traversing through the products array to find if the product being added already exist in the cart         
-            if ($product['name'] == $this->input->post('name')) { 
+        
+        //traversing through the products array to find if the product being added already exist in the cart
+        foreach ($products as $product) {          
+            if ($product['id'] == $this->input->post('id')) { 
                 $product['amount'] += $this->input->post('amount');
                 $newProduct = array(
                     'id'       => $product['id'],
-                    'name'     => $product['name'],
-                    'price'    => $product['price'],
-                    'amount'   => $product['amount']);
-                $existed = true;
+                    'amount'   => $product['amount']
+                );
+                $exist = true;
                 $products[$count] = $newProduct;
                 $this->session->set_userdata('products', $products);
-                break;
+                $this->load->view('addtocart', array('newProduct' => $newProduct));
             }
             $count++;
         }
+
+        //if it doesnt exist create an array with the infomation of the product we just added to cart
+        $newProduct = array(
+            'id'       => $this->input->post('product_id'),
+            'amount' => $this->input->post('amount')
+        );
         
-        
-        //if it doesnt exist
-        //create an array with the infomation of the product we just added to cart
-        if ($existed == false) {
-            $newProduct = array(
-                'id'       => $this->input->post('product_id'),
-                'name'     => $this->input->post('name'),
-                'price'    => $this->input->post('price'),
-                'amount' => $this->input->post('amount')
-            );
-            array_push($products, $newProduct); //push it into the session cart
-            $this->session->set_userdata('products', $products);
-        }
-        $this->load->view('addtocart', array('newProduct' => $newProduct)); //load the views files with the new product array being pushed onto it
+        //push it into the session cart
+        array_push($products, $newProduct); 
+        $this->session->set_userdata('products', $products);
+        $this->load->view('addtocart', array('newProduct' => $newProduct));
     }
 
     //procceed to checkout method
