@@ -18,7 +18,7 @@
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
 
-        <h1> Stickers </h1>
+        <h1> Homemade Stickers </h1>
         <div id = "listings_header">
             <div class ="sort_controls">
             <label> Sorted by: </label>
