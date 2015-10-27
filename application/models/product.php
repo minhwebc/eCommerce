@@ -10,6 +10,8 @@ class product extends CI_model {
     
     function get_product_by_id($id) {
     	$query = "SELECT * FROM products
+                  join images
+                  on images.product_id = products.id
     	          left join categorization 
     	          on products.id = categorization.product_id 
     			  where products.id = ?";
@@ -17,15 +19,17 @@ class product extends CI_model {
     	return $this->db->query($query, $values)->row_array();
     }
 
-    function get_similar_product($category_id) {
+    function get_similar_product($category_id, $id) {
     	$query="SELECT * FROM categories
     			left join categorization
     			on categories.id = categorization.category_id
     			left join products
     			on products.id = categorization.product_id
-    			where categories.id = ?
-    			limit 6";
-    	$values = array($category_id);
+                join images
+                on products.id = images.product_id
+    			where categories.id = ? and  products.id != ?
+    			limit 4";
+    	$values = array($category_id, $id);
     	return $this->db->query($query, $values)->result_array();
     }
 
