@@ -13,15 +13,15 @@
                 border: 1px solid e7e7e7;
             }
 
-            .form-shipping, .form-billing{
-            	width: 300px;
-            }
+          .form-horizontal input {
+          	width: 350px;
+          }
 
             .form-cc{
             	width: 600px;
             }
 
-            .btn-default1{
+            .btn-default{
             	background: #8AC8FF;
             	color: #ffffff;
             
@@ -45,85 +45,135 @@
 	<div class="container">
             <?php $this->load->view('partials/nav'); ?>
 		
-		<h1> Shipping Information</h1>
-		<form>
-		  <div class="form-shipping">
-		    <label>First Name:</label>
-		    <input type="text" class="form-control" id="first_name" placeholder="First name...">
-		  </div>
-		  <div class="form-shipping">
-		    <label>Last Name:</label>
-		    <input type="text" class="form-control" id="last_name" placeholder="Last name...">
-		  </div>
-		  <div class="form-shipping">
-		    <label>Address:</label>
-		    <input type="text" class="form-control" id="address" placeholder="Address...">
-		  </div>
-		  <div class="form-shipping">
-		    <label>Address 2:</label>
-		    <input type="text" class="form-control" id="address2" placeholder="Address 2...">
-		  </div>
-		  <div class="form-shipping">
-		    <label>City</label>
-		    <input type="text" class="form-control" id="city" placeholder="City...">
-		  </div>
-		  <div class="form-shipping">
-		    <label>State</label>
-		    <input type="text" class="form-control" id="state" placeholder="State...">
-		  </div>
-		  <div class="form-shipping">
-		    <label>Zipcode</label>
-		    <input type="text" class="form-control" id="zipcode" placeholder="Zipcode...">
+		<h3> Shipping Information</h3>
+
+		<p>Click to <a href ="/users/signin"><b> sign in </b></a> or continue below as a guest: </p>
+		 
+		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="firstname" class="col-sm-2 control-label">First Name:</label>
+		    <div class="col-sm-10">
+		      <input type="email" class="form-control" id="first_name" placeholder="First name...">
+		    </div>
 		  </div>
 
-	
-		    <h1> Billing Information</h1>
-		    <form>
-		  <div class="checkbox">
-		    <label>
-		      <input type="checkbox" id="sameas" onclick="sameAsShipping()">
-      Same as Shipping</label>
+		  <div class="form-group">
+		    <label for="lastname" class="col-sm-2 control-label">Last Name:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="last_name" placeholder="Last name...">
+		    </div>
 		  </div>
-		  <div class="form-billing">
-		    <label>First Name:</label>
-		    <input type="text" class="form-control" id="first_billing" placeholder="First name...">
+
+		  <div class="form-group">
+		    <label for="address1" class="col-sm-2 control-label">Address:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="address" placeholder="Address...">
+		    </div>
 		  </div>
-		  <div class="form-billing">
-		    <label>Last Name:</label>
-		    <input type="text" class="form-control" id="last_billing" placeholder="Last name...">
+
+		  <div class="form-group">
+		    <label for="address2" class="col-sm-2 control-label">Address 2:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="address2" placeholder="Address 2...">
+		    </div>
 		  </div>
-		  <div class="form-billing">
-		    <label>Address:</label>
-		    <input type="text" class="form-control" id="address_billing" placeholder="Address...">
+
+		  <div class="form-group">
+		    <label for="city1" class="col-sm-2 control-label">City:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="city" placeholder="City...">
+		    </div>
 		  </div>
-		  <div class="form-billing">
-		    <label>Address 2:</label>
-		    <input type="text" class="form-control" id="address2_billing" placeholder="Address 2...">
+
+		  <div class="form-group">
+		    <label for="state1" class="col-sm-2 control-label">State:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="state" placeholder="State...">
+		    </div>
 		  </div>
-		  <div class="form-billing">
-		    <label>City</label>
-		    <input type="text" class="form-control" id="city_billing" placeholder="City...">
-		  </div>
-		  <div class="form-billing">
-		    <label>State</label>
-		    <input type="text" class="form-control" id="state_billing" placeholder="State...">
-		  </div>
-		  <div class="form-billing">
-		    <label>Zipcode</label>
-		    <input type="text" class="form-control" id="zipcode_billing" placeholder="Zipcode...">
-		  </div>
-		  <div class="form-billing">
-		    <label>Card</label>
-		    <input type="text" class="form-control" id="credit" placeholder="Card...">
-		  </div>
-		  <div class="form-billing">
-		    <label>Security Code</label>
-		    <input type="text" class="form-control" id="security_code" placeholder="Security code...">
+
+		  <div class="form-group">
+		    <label for="zipcode1" class="col-sm-2 control-label">Zipcode:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="zipcode" placeholder="Zipcode...">
+		    </div>
 		  </div>
 		</form>
 
-		<div class="form-cc">
-        <label class="col-sm-3 control-label" for="expiry-month">Expiration</label>
+		<h3> Billing Information</h3>
+
+		<div class="checkbox">
+		    <label>
+		      <input type="checkbox" id="sameas" onclick="sameAsShipping()">
+     		 Same as Shipping</label>
+		</div>
+
+		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="firstname_b" class="col-sm-2 control-label">First Name:</label>
+		    <div class="col-sm-10">
+		      <input type="email" class="form-control" id="first_billing" placeholder="First name...">
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="lastname_b" class="col-sm-2 control-label">Last Name:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="last_billing" placeholder="Last name...">
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="address1_b" class="col-sm-2 control-label">Address:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="address_billing" placeholder="Address...">
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="address2_b" class="col-sm-2 control-label">Address 2:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="address2_billing" placeholder="Address 2...">
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="city1_b" class="col-sm-2 control-label">City:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="city_billing" placeholder="City...">
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="state1_b" class="col-sm-2 control-label">State:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="state_billing" placeholder="State...">
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="zipcode1_b" class="col-sm-2 control-label">Zipcode:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="zipcode_billing" placeholder="Zipcode..."><br>
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="card" class="col-sm-2 control-label">Card:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="card" placeholder="Card number...">
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="code" class="col-sm-2 control-label">Code:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="code" placeholder="Security code...">
+		    </div>
+		  </div>
+
+		  <div class="form-cc">
+        <label class="col-sm-3 control-label" for="expiry-month">Expiration:</label>
         <div class="col-sm-9">
           <div class="row">
             <div class="col-xs-3">
@@ -162,8 +212,8 @@
         </div>
       </div>
 
-		  <button type="submit" class="btn btn-default1">Pay</button>
-		</form>
+      <br><button type="submit" class="btn btn-default">Pay</button>
+	</form>
 	</div>		
 </body>
 </html>
