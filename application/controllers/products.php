@@ -99,6 +99,10 @@ class products extends CI_Controller
         $this->load->view('search_result', array('products'=>$products));
     }
 
+    public function edit(){
+        $this->load->view("edit");
+    }
+
 
 }
 
