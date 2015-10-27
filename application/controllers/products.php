@@ -28,10 +28,11 @@ class products extends CI_Controller
     
     public function show($id)
     {
+        
         $product       = $this->product->get_product_by_id($id);
         $catergory     = $product['catergory_id']; //get the catergory of that product so we can get products with the same catergory
         $same_products = $this->product->get_similar_product($catergory); //get those products
-        $this->load->view('product', array(
+        $this->load->view('show', array(
             'product' => $product,
             'similar products' => $same_products
         ));

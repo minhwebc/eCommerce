@@ -13,7 +13,7 @@ class product extends CI_model {
     	          left join catergorization 
     	          on products.id = catergorization.product_id 
     			  where products.id = ?";
-    	$values = $id;
+    	$values = array($id);
     	return $this->db->query($query, $values)->row_array();
     }
 
@@ -23,9 +23,9 @@ class product extends CI_model {
     			on catergories.id = catergorization.catergory_id
     			left join products
     			on products.id = catergorization.product_id
-    			where catergory.id = ?
+    			where catergories.id = ?
     			limit 6";
-    	$values = $catergory_id;
+    	$values = array($catergory_id);
     	return $this->db->query($query, $values)->result_array();
     }
 
@@ -34,8 +34,7 @@ class product extends CI_model {
     	$values = $start;
     	return $this->db->query($query, $values)->result_array();
     }
-
-    function 
+ 
 }
 
 ?>
