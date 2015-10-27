@@ -19,6 +19,8 @@
         </style>
 	</head>
 	<body> 
+
+        
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
 
@@ -46,7 +48,7 @@
 
         </div>      
 
-        <div id ="side_menu">
+
 
             
 
@@ -56,32 +58,22 @@
 
             <div id ="listing_wrapper">
                 
-            </div>  
+    <?php $count=0;
+        foreach($products as $product){ 
+            if ($count % 3 == 0){ ?>
+                <div class ="row">
+<?php       }  $count ++;
+            ?>
 
+            <div class="col-md-4"><a href="/products/show/<?= $product['product_id'] ?>" class="thumbnail">
+            <img src="assets/images/<?= $product['source'] ?>" alt="Kawaii Bag"></a></div>
+<?php       if ($count % 3 == 0){ ?>
+                </div>
+<?php       }
+        } ?>
+     
 
-
-        <div class="row">
-          <div class="col-xs-6 col-md-4">
-            <a href="#" class="thumbnail">
-              <img src="assets/images/bag.jpg" alt="Kawaii Bag"></a></div>
-            <div class="col-xs-6 col-md-4">
-            <a href="#" class="thumbnail">
-                <img src="assets/images/bats.jpg" alt="Kawaii Bat"></a></div>
-                <div class="col-xs-6 col-md-4">
-            <a href="#" class="thumbnail">
-                <img src="assets/images/donuts.jpg" alt="Kawaii Donuts"></a></div>
-                <div class="col-xs-6 col-md-4">
-            <a href="#" class="thumbnail">
-                <img src="assets/images/garbagecan.jpg" alt="Kawaii Garbage Can"></a></div>
-            <div class="col-xs-6 col-md-4">
-            <a href="#" class="thumbnail">
-                <img src="assets/images/halloween.jpg" alt="Kawaii Halloween"></a></div>
-                <div class="col-xs-6 col-md-4">
-            <a href="#" class="thumbnail">
-                <img src="assets/images/icecream.jpg" alt="Kawaii Ice Cream"></a></div>
-        </div>
-
-
+</div>
         
 
 
