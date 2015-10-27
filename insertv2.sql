@@ -4,24 +4,18 @@ INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inven
 INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `created_at`, `updated_at`) VALUES ('4', 'Garbage Day', '4', 'Do you forget when to take out the garbage?', '10', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `created_at`, `updated_at`) VALUES ('5', 'Donut days', '4', 'I crave donuts, do you?', '10', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `created_at`, `updated_at`) VALUES ('6', 'I scream for ice cream', '4', 'Is it hot? Come get an ice cone!', '10', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
-
-
-
-
-
-
-
-
-
-
 INSERT INTO `ecommerce`.`images` (`id`, `source`, `product_id`) VALUES ('1', 'halloween.jpg', '1');
 INSERT INTO `ecommerce`.`images` (`id`, `source`, `product_id`) VALUES ('2', 'bats.jpg', '2');
 INSERT INTO `ecommerce`.`images` (`id`, `source`, `product_id`) VALUES ('3', 'bag.jpg', '3');
 INSERT INTO `ecommerce`.`images` (`id`, `source`, `product_id`) VALUES ('4', 'garbagecan.jpg', '4');
 INSERT INTO `ecommerce`.`images` (`id`, `source`, `product_id`) VALUES ('5', 'donuts.jpg', '5');
 INSERT INTO `ecommerce`.`images` (`id`, `source`, `product_id`) VALUES ('6', 'icecream.jpg', '6');
-
-
-
-
+INSERT INTO `ecommerce`.`categories` (`id`, `name`) VALUES ('1', 'Food');
+INSERT INTO `ecommerce`.`categories` (`id`, `name`) VALUES ('2', 'Seasonal');
+INSERT INTO `ecommerce`.`categories` (`id`, `name`) VALUES ('3', 'Reminders');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('1', '5');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('2', '1');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('2', '2');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('3', '3');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('3', '4');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('1', '6');
