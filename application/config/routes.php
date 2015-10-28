@@ -11,3 +11,4 @@ $route['signinUser'] = 'users/signinUser';
 $route['logoff'] = 'users/logoff';
 $route['products/show/(:any)'] = 'products/show/$1';
 $route['products/edit/(:any)'] = "products/edit/$1";
+$route['products/delete/(:any)'] = "products/delete/$1";

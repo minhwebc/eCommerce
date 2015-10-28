@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 date_default_timezone_set('America/Los_Angeles');
@@ -112,10 +113,30 @@ class products extends CI_Controller
         $this->load->view('search_result', array('products'=>$products));
     }
 
-    public function edit(){
-        $this->load->view("edit");
+    
+    //add another product to the inventory
+    public function create (){
+        $this->product->create($this->input->post());
+        redirect("/dashboard/products");
+
     }
 
+    public function edit($id){
+        $product = $this->product->get_one($id);
+        $this->load->view("edit", array(
+                "product" => $product
+        ));
+    }
+
+    public function update_product(){
+        $this->product->update_product($this->input->post());
+        redirect("/dashboard/products");
+    }
+
+    public function delete($id){
+        $this->product->delete($id);
+        redirect("/dashboard/products");
+    }
 
 }
 

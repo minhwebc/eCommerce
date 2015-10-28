@@ -1,4 +1,3 @@
-
 <?php
 
 class product extends CI_model {
@@ -46,6 +45,43 @@ class product extends CI_model {
     }
 
     
+    //get product information 
+    public function get_one($id){
+        $query = "SELECT id, name, price, description FROM products WHERE id = ?";
+        $values = $id;
+        return $this->db->query($query,$values)->row_array();
+    }
+
+
+    // admin create new product
+    public function create($post){
+        // var_dump($post);
+        // die();
+        $query = "INSERT INTO products (name, price, description, created_at, updated_at) VALUES (?,?,?, NOW(),NOW())";
+        $values = array($post["name"], $post["price"], $post["description"]);
+        $this->db->query($query,$values);
+    }
+
+    // admin update or change product details 
+    public function update_product($post){
+        $query = "UPDATE products 
+                  SET name = ?, price = ?, description = ?, updated_at = NOW() 
+                  WHERE id = ?";
+        $values = array($post["name"], $post["price"], $post["description"],  $post["id"]);
+        $this->db->query($query,$values);
+
+
+    }
+
+    //admin deletes product
+    public function delete($id){
+        $query = "DELETE FROM images WHERE id = ?";
+        $values = $id;
+        $this->db->query($query,$values);
+        $query = "DELETE FROM products WHERE id = ?";
+        $values = $id;
+        $this->db->query($query,$values);
+    }
  
 }
 

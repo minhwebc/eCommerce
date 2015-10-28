@@ -56,34 +56,37 @@
 
 	<h2>Edit a product</h2>
 	
-	<form class="form-horizontal">
+	<form class="form-horizontal" action="/products/update_product" method="post">
+		<input type="hidden" name="id" value="<?= $product['id'] ?>">
   		<div class="form-group">
     		<label for="name" class="col-sm-2 control-label">Name: </label>
     		<div class="col-sm-10">
-      			<input type="text" class="form-control" id="prod_name" placeholder="Name...">
+      			<input type="text" class="form-control" name='name'  id="prod_name"  value ="<?= $product['name'] ?>">
     		</div>
   		</div>
-  
+
   		<div class="form-group">
+    		<label for="name" class="col-sm-2 control-label">Price </label>
+    		<div class="col-sm-10">
+      			<input type="text" class="form-control"  name='price' id="prod_name"  value ="<?= $product['price'] ?>">
+    		</div>
+  		</div>
+
+ 		<div class="form-group">
     		<label for="description" class="col-sm-2 control-label">Description: </label>
     		<div class="col-sm-10">
-      			<textarea class="form-control"  rows ="5" id="prod_text" placeholder="Description"></textarea>
+      			<textarea class="form-control"  rows ="5" name='description' id="prod_text" value="<?= $product['description'] ?>"></textarea>
    			</div>
   		</div>
 
-		<!-- <div class="btn-group">
-			<label for="description" class="col-sm-2 control-label">Categories</label>
-			<div class="col-sm-10">
-  			<div class="btn-group btn-input clearfix"> -->
-  			<!-- <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-    		<span data-bind="label">Select One</span> <span class="caret"></span>
-  			</button>
-  			<ul class="dropdown-menu" role="menu">
-   				<li><a href="#">Item 1</a></li>
-    			<li><a href="#">Another item</a></li>
-    			<li><a href="#">This is a longer item that will not fit properly</a></li>
-  				</ul>
-			</div> -->
+			<div class="form-group">
+			  <label for="sell">Select list:</label>
+			  <select class="form-control" id="sell">
+			    <option>Food</option>
+			    <option>Seasonal</option>
+			    <option>Bills</option>
+			  </select>
+			</div>
 
 		<div class="form-group">
     		<label for="name" class="col-sm-2 control-label">or add a new category:</label>
@@ -95,6 +98,9 @@
   		<div class="form-group">
     		<label for="exampleInputFile">Images</label>
    		 	<input type="file" id="exampleInputFile">
+			
+			<input type="submit" value="Update">
+		</div>
 		</form>
 
 

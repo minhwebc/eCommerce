@@ -23,6 +23,9 @@
         <div class="container">
             <?php $this->load->view('partials/nav-admin'); ?>
 
+            <!--Add new product-->
+            <a href="/products/edit/">Add a new product</a>
+
             <!-- Product Table -->
             <h1>All Products</h1>
             <table class="table table-hover">
@@ -39,8 +42,9 @@
                     <td><?= $detail['id'] ?></td>
                     <td><?= $detail['name'] ?></a></td>
                     <td><?= $detail['price'] ?></td>
-                    <td>250</td>
-                    <td><a href="/products/edit/<?= $detail["id"] ?>">Edit</a> | <a href="">Delete</a></td>
+                    <td><?= $detail['inventory_count'] ?></td>
+                    <td></td>
+                    <td><a href="/products/edit/<?= $detail["id"] ?>">Edit</a> | <a href="/products/delete/<?= $detail["id"] ?>">Delete</a></td>
                 </tr>
                 <?php } ?>
             </table>
