@@ -24,7 +24,7 @@
             <?php $this->load->view('partials/nav-admin'); ?>
 
             <!--Add new product-->
-            <a href="/products/edit/">Add a new product</a>
+            <a href="/products/create/">Add a new product</a>
 
             <!-- Product Table -->
             <h1>All Products</h1>

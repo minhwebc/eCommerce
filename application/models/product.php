@@ -55,11 +55,11 @@ class product extends CI_model {
 
     // admin create new product
     public function create($post){
-        // var_dump($post);
-        // die();
+          // var_dump($post);
+          // die();
         $query = "INSERT INTO products (name, price, description, created_at, updated_at) VALUES (?,?,?, NOW(),NOW())";
         $values = array($post["name"], $post["price"], $post["description"]);
-        $this->db->query($query,$values);
+        return $this->db->query($query,$values);
     }
 
     // admin update or change product details 
@@ -69,8 +69,6 @@ class product extends CI_model {
                   WHERE id = ?";
         $values = array($post["name"], $post["price"], $post["description"],  $post["id"]);
         $this->db->query($query,$values);
-
-
     }
 
     //admin deletes product

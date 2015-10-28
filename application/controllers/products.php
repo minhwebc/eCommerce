@@ -138,9 +138,8 @@ class products extends CI_Controller
     
     //add another product to the inventory
     public function create (){
-        $this->product->create($this->input->post());
-        redirect("/dashboard/products");
-
+       $this->product->create($this->input->post());
+        $this->load->view("create");
     }
 
     public function edit($id){
