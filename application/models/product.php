@@ -2,6 +2,10 @@
 
 class product extends CI_model {
     
+    function count_products() {
+        return $this->db->count_all('products');
+    }
+    
     function get_all_products() {
         $query = "select * from products join images on images.product_id = products.id"; 
         return $this->db->query($query)->result_array();
@@ -35,9 +39,19 @@ class product extends CI_model {
     }
 
     function get_products_by_limit($start){
-    	$query= "SELECT * FROM products limit ?, 15";
-    	$values = $start;
-    	return $this->db->query($query, $values)->result_array();
+        $this->db->limit(2, $start);
+        $this->db->from('products');
+        $this->db->join('images', 'images.product_id = products.id');
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            foreach($query->result() as $row) {
+                $data[] = $row;   
+            }
+            return $data;
+        }
+        
+        return false;
     }
 
   
@@ -48,11 +62,8 @@ class product extends CI_model {
         return $this->db->query($query,$values)->row_array();
     }
 
-
     // admin create new product
     public function create($post){
-          // var_dump($post);
-          // die();
         $query = "INSERT INTO products (name, price, description, created_at, updated_at) VALUES (?,?,?, NOW(),NOW())";
         $values = array($post["name"], $post["price"], $post["description"]);
         return $this->db->query($query,$values);

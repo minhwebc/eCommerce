@@ -10,6 +10,7 @@ class products extends CI_Controller {
         parent::__construct();
         $this->output->enable_profiler();
         $this->load->model('product');
+        $this->load->library('pagination');
         
         if ($this->session->userdata('cart_amount') == NULL && $this->session->userdata('products') == NULL) {
             $this->session->set_userdata('cart_amount', 0);
@@ -21,9 +22,35 @@ class products extends CI_Controller {
     
     public function index() {
         $products = $this->product->get_all_products();
-        $this->load->view('index', array(
-            "products" => $products
-        ));
+        $this->load->view('index', array('products' => $products));
+    }
+    
+    public function all() {
+        $config = array();
+        $config['base_url'] = ('/products/all');
+        $config['total_rows'] = $this->product->count_products();
+        $config['per_page'] = 2;
+        $config['attributes'] = array('class' => 'inactive');
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] ='<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['uri_segment'] = 3;
+        
+        $this->pagination->initialize($config);
+        
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['results'] = $this->product->get_products_by_limit($page);
+        $data['links'] = $this->pagination->create_links();
+        
+        $this->load->view('all', $data);
     }
     
     public function show($id){
@@ -101,6 +128,7 @@ class products extends CI_Controller {
         redirect('/products/cart');
     }
     
+    // view cart
     public function cart(){
         $products = $this->session->userdata('products');
         $items = array();
@@ -120,7 +148,6 @@ class products extends CI_Controller {
         )); 
     }
         
-    
     //proceed to checkout method
     public function checkout(){
         $products = $this->session->userdata('products');

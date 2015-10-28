@@ -20,7 +20,7 @@
 	<body>     
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
-            <h1> All Stickers </h1>
+            <h1> Welcome! </h1>
             <div class ="sort_controls">
                 <label> Sorted by:</label>
                 <!-- Single button -->
