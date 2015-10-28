@@ -95,6 +95,14 @@
     		</div>
   		</div>
 
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Inventory Count </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control"  name='inventory' id="prod_name"  value ="<?= $product['inventory_count'] ?>">
+        </div>
+      </div>
+
+
   		<div class="form-group">
     		<label for="exampleInputFile">Images</label>
    		 	<input type="file" id="exampleInputFile">
