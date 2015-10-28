@@ -40,11 +40,7 @@ class product extends CI_model {
     	return $this->db->query($query, $values)->result_array();
     }
 
-    public function get_products_by_id(){
-
-    }
-
-    
+  
     //get product information 
     public function get_one($id){
         $query = "SELECT id, name, price, description FROM products WHERE id = ?";
@@ -73,12 +69,15 @@ class product extends CI_model {
 
     //admin deletes product
     public function delete($id){
+        $query = "DELETE FROM categorization WHERE categorization.product_id = ?";
+        $values = $id;
+        $this->db->query($query, $values);
         $query = "DELETE FROM images WHERE id = ?";
         $values = $id;
-        $this->db->query($query,$values);
+        $this->db->query($query, $values);
         $query = "DELETE FROM products WHERE id = ?";
         $values = $id;
-        $this->db->query($query,$values);
+        $this->db->query($query, $values);
     }
  
 }

@@ -6,6 +6,7 @@ class dashboard extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->output->enable_profiler();
+        $this->load->model('product');
         
         if (!$this->session->userdata('admin')) {
             redirect('/');
@@ -33,6 +34,33 @@ class dashboard extends CI_Controller {
         $products = $this->product->get_all_products();
         $this->load->view('products', array('products' => $products));
 	}
+    
+
+    public function create(){
+        $this->load->view("create");
+    }
+    
+    public function create_product(){
+        $this->product->create($this->input->post());   
+        redirect("/dashboard/products/");
+    }
+
+    public function edit($id){
+        $product = $this->product->get_one($id);
+        $this->load->view("edit", array(
+                "product" => $product
+        ));
+    }
+
+    public function update_product(){
+        $this->product->update_product($this->input->post());
+        redirect("/dashboard/products");
+    }
+
+    public function delete($id){
+        $this->product->delete($id);
+        redirect("/dashboard/products");
+    }
 }
 
 ?>

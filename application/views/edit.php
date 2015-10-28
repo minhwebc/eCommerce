@@ -56,7 +56,7 @@
 
 	<h2>Edit a product</h2>
 	
-	<form class="form-horizontal" action="/products/update_product" method="post">
+	<form class="form-horizontal" action="/dashboard/update_product" method="post">
 		<input type="hidden" name="id" value="<?= $product['id'] ?>">
   		<div class="form-group">
     		<label for="name" class="col-sm-2 control-label">Name: </label>

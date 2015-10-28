@@ -10,5 +10,5 @@ $route['registerUser'] = 'users/registerUser';
 $route['signinUser'] = 'users/signinUser';
 $route['logoff'] = 'users/logoff';
 $route['products/show/(:any)'] = 'products/show/$1';
-$route['products/edit/(:any)'] = "products/edit/$1";
-$route['products/delete/(:any)'] = "products/delete/$1";
+$route['dashboard/edit/(:any)'] = "dashboard/edit/$1";
+$route['dashboard/delete/(:any)'] = "dashboard/delete/$1";

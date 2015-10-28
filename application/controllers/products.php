@@ -140,34 +140,6 @@ class products extends CI_Controller {
         $this->load->view('search_result', array('products'=>$products));
     }
 
-    
-    
-    
-    
-    //Should be in Dashboard
-    //add another product to the inventory
-    public function create(){
-       $this->product->create($this->input->post());
-        $this->load->view("create");
-    }
-
-    public function edit($id){
-        $product = $this->product->get_one($id);
-        $this->load->view("edit", array(
-                "product" => $product
-        ));
-    }
-
-    public function update_product(){
-        $this->product->update_product($this->input->post());
-        redirect("/dashboard/products");
-    }
-
-    public function delete($id){
-        $this->product->delete($id);
-        redirect("/dashboard/products");
-    }
-
 }
 
 ?>

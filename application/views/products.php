@@ -24,7 +24,7 @@
             <?php $this->load->view('partials/nav-admin'); ?>
 
             <!--Add new product-->
-            <a href="/products/create/">Add a new product</a>
+            <a href="/dashboard/create/">Add a new product</a>
 
             <!-- Product Table -->
             <h1>All Products</h1>
@@ -44,7 +44,7 @@
                     <td><?= $detail['price'] ?></td>
                     <td><?= $detail['inventory_count'] ?></td>
                     <td></td>
-                    <td><a href="/products/edit/<?= $detail["id"] ?>">Edit</a> | <a href="/products/delete/<?= $detail["id"] ?>">Delete</a></td>
+                    <td><a href="/dashboard/edit/<?= $detail["id"] ?>">Edit</a> | <a href="/dashboard/delete/<?= $detail["id"] ?>">Delete</a></td>
                 </tr>
                 <?php } ?>
             </table>
