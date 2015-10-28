@@ -9,7 +9,6 @@ class order extends CI_model {
     }
 
     function insert_order($info, $total) {
-    	echo "<pre>";
 
     	$bill_id;
     	if($this->session->userdata('user_id') == null){
@@ -47,6 +46,7 @@ class order extends CI_model {
 			$query = "INSERT INTO billing_addresses(user_id, billing_id) values (?,?)";
 			$values = array($user_id, $ship_id);
 			$this->db->query($query, $values);
+
 		}
 
 		//insert card into cards table
@@ -66,14 +66,11 @@ class order extends CI_model {
 
 
     	$products = $this->session->userdata('products');
-    	var_dump($products);
     	foreach($products as $product)
     	{
     		$this->insert_product($order_id, $product['id'], $product['amount']);//insert into the product_orders table
     	}
-    	echo 'we got here';
-    	echo "</pre>";
-    	die();
+        return array('products' => $products, 'order_id' => $order_id);
     }
 
     public function insert_product($order_id, $product_id, $quantity)
@@ -82,6 +79,13 @@ class order extends CI_model {
     				values(?,?,?, NOW(), NOW())";
     	$values = array($product_id, $order_id,$quantity);
     	return $this->db->query($query, $values);
+    }
+
+    public function get_date($order_id)
+    {
+        $query="SELECT orders.created_at from orders where orders.id = ?";
+        $values = array($order_id);
+        return $this->db->query($query, $values)->row_array();
     }
 }
 

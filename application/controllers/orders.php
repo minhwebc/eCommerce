@@ -20,8 +20,19 @@ class Orders extends CI_Controller
 
     public function pay($total)
     {
-        $this->order->insert_order($this->input->post(), $total);
-        redirect('/orders');
+        $info = $this->order->insert_order($this->input->post(), $total);
+        $order_date = $this->order->get_date($info['order_id']);
+        $products = $info['products'];
+        $items = array();
+        foreach($products as $product)
+        {
+            $item = $this->product->get_product_by_id($product['id']);
+            $amount = array('amount' => $product['amount']);
+            array_push($item, $amount);
+            array_push($items, $item);
+        }
+        $this->session->sess_destroy();
+        $this->load->view('receipt', array('products' => $items, 'order_date'=>$order_date, 'total' => $total));
     }
 }
 
