@@ -3,10 +3,6 @@
 	<head>
 		<title>Our Product</title>
 		<meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>      
         <style type="text/css">
             
             h1 {
@@ -29,7 +25,7 @@
                 max-width: 200px;
             }
             
-            #similar .h3, h3, a {
+            #similar h3, h3, a {
                 font-size: 104%;
                 color: skyblue;
                 font-weight:bold;

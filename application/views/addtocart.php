@@ -122,7 +122,7 @@
                             Item succesfully added to your cart!</p>
                     <?php } ?>
                     
-                    <p class="remove">Remove</p>
+                    <p class="remove"><a href=""></a>Remove</p>
                     
                 </div>
             </div>

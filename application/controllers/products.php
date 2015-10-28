@@ -4,48 +4,39 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 date_default_timezone_set('America/Los_Angeles');
 
-class products extends CI_Controller
-{
+class products extends CI_Controller {
     
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->output->enable_profiler();
         $this->load->model('product');
         
-            
         if ($this->session->userdata('cart_amount') == NULL && $this->session->userdata('products') == NULL) {
             $this->session->set_userdata('cart_amount', 0);
             $this->session->set_userdata('products', array()); 
             //set the products to an empty array so later we can push in new array of products as the users
             //orders more
         }
-
     }
     
     public function index() {
-
         $products = $this->product->get_all_products();
         $this->load->view('index', array(
             "products" => $products
         ));
     }
     
-    public function show($id)
-    {
-        
-        $product       = $this->product->get_product_by_id($id);
-        $category      = $product['category_id']; //get the category of that product so we can get products with the same category
-        $same_products = $this->product->get_similar_products($category, $id); //get those products
+    public function show($id){
+        $product = $this->product->get_product_by_id($id);
+        $same_products = $this->product->get_similar_products($id); //get those products
         $this->load->view('show', array(
             'product' => $product,
             'similar' => $same_products
         ));
     }
     
-    public function category($category_id, $page_numer)
-    {
-        $start    = 1 + 15 * ($page_numer - 1);
+    public function category($category_id, $page_numer) {
+        $start = 1 + 15 * ($page_numer - 1);
         $products = $this->product->get_products_by_limit($start);
         $this->load->view('page', array('products'=> $products));
     }
@@ -90,7 +81,6 @@ class products extends CI_Controller
     }
 
     public function add($id) {
-        
         $products = $this->session->userdata('products');
         $items = array();
         foreach($products as $product){
@@ -108,12 +98,6 @@ class products extends CI_Controller
             'newProduct' => $recentlyAdded,
             'items' => $items
         ));
-    }
-    
-    public function update(){
-        
-        var_dump($this->input->post());
-        die();
     }
     
     //proceed to checkout method
@@ -135,9 +119,8 @@ class products extends CI_Controller
         $this->load->view('search_result', array('products'=>$products));
     }
 
-    
     //add another product to the inventory
-    public function create (){
+    public function create(){
        $this->product->create($this->input->post());
         $this->load->view("create");
     }
