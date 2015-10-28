@@ -64,7 +64,7 @@
                         <?php } ?>
                         </select>
                         <input type="hidden" name="name" value="<?= $product['name'] ?>">
-                        <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
+                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
 
                         <button id="addToCart" type="submit" class="btn btn-default">Add to Cart</button>
                     </form>
