@@ -18,9 +18,9 @@ class Orders extends CI_Controller
         $this->load->view('summary');
     }
 
-    public function pay()
+    public function pay($total)
     {
-        $this->order->insert_order($this->input->post());
+        $this->order->insert_order($this->input->post(), $total);
         redirect('/orders');
     }
 }
