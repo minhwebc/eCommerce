@@ -36,7 +36,7 @@ class products extends CI_Controller
         
         $product       = $this->product->get_product_by_id($id);
         $category      = $product['category_id']; //get the category of that product so we can get products with the same category
-        $same_products = $this->product->get_similar_product($category, $id); //get those products
+        $same_products = $this->product->get_similar_products($category, $id); //get those products
         $this->load->view('show', array(
             'product' => $product,
             'similar' => $same_products
@@ -90,11 +90,33 @@ class products extends CI_Controller
     }
 
     public function add($id) {
+        
+        $products = $this->session->userdata('products');
+        $items = array();
+        foreach($products as $product){
+            $info = $this->product->get_product_by_id($product['id']);
+            $item = array('name' => $info['name'],
+                        'price' => $info['price'],
+                        'amount' => $product['amount'],
+                        'id' => $info['id'],
+                        'source' => $info['source']);
+            array_push($items, $item);
+        }
+        
         $recentlyAdded = $this->product->get_product_by_id($id);
-        $this->load->view('addtocart', array('newProduct' => $recentlyAdded));
+        $this->load->view('addtocart', array(
+            'newProduct' => $recentlyAdded,
+            'items' => $items
+        ));
     }
     
-    //procceed to checkout method
+    public function update(){
+        
+        var_dump($this->input->post());
+        die();
+    }
+    
+    //proceed to checkout method
     public function cart(){
         $products = $this->session->userdata('products');
         $items = array();
