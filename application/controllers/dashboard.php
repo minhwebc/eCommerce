@@ -7,6 +7,8 @@ class dashboard extends CI_Controller {
         parent::__construct();
         $this->output->enable_profiler();
         $this->load->model('product');
+        $this->load->library('pagination');
+
         
         if (!$this->session->userdata('admin')) {
             redirect('/');
@@ -30,9 +32,35 @@ class dashboard extends CI_Controller {
 	}
     
     public function products() {
-        $this->load->model('product');
-        $products = $this->product->get_all_products();
-        $this->load->view('products', array('products' => $products));
+        $config = array();
+        $config['base_url'] = ('/dashboard/products');
+        $config['total_rows'] = $this->product->count_products();
+        $config['per_page'] = 4;
+        $config['attributes'] = array('class' => 'inactive');
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['prev_link'] = '&laquo;';
+        $config['last_tag_open'] ='<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_tag_open'] ='<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_tag_open'] ='<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['uri_segment'] = 3;
+        
+        $this->pagination->initialize($config);
+        
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['results'] = $this->product->get_products_by_limit($config['per_page'], $page);
+        $data['links'] = $this->pagination->create_links();
+        
+        $this->load->view('products', $data);
 	}
     
 

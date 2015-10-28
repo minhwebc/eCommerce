@@ -2,11 +2,7 @@
 <html>
 	<head>
 		<title>All Products</title>
-		<meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>      
+		<meta charset="UTF-8">   
         <style type="text/css">
             
             .navbar {
@@ -37,17 +33,31 @@
                     <th>Quantity Sold</th>
                     <th>Action</th>
                 </tr>
-                <?php foreach($products as $detail){ ?>
+                <?php foreach($results as $product){ ?>
                 <tr>
-                    <td><?= $detail['id'] ?></td>
-                    <td><?= $detail['name'] ?></a></td>
-                    <td><?= $detail['price'] ?></td>
-                    <td><?= $detail['inventory_count'] ?></td>
+                    <td><?= $product->id ?></td>
+                    <td><?= $product->name ?></a></td>
+                    <td><?= $product->price ?></td>
+                    <td><?= $product->inventory_count ?></td>
                     <td></td>
-                    <td><a href="/dashboard/edit/<?= $detail["id"] ?>">Edit</a> | <a href="/dashboard/delete/<?= $detail["id"] ?>">Delete</a></td>
+                    <td><a href="/dashboard/edit/<?= $product->id ?>">Edit</a> | <a href="/dashboard/delete/<?= $product->id ?>">Delete</a></td>
                 </tr>
                 <?php } ?>
             </table>
+    
+    
+
+
+        <nav>
+            <ul class="pagination">
+                <?= $links ?>
+            </ul>
+                </nav>
+
+     
+    
+    
+    
         </div> 
     </body>
 </html>

@@ -1,7 +1,6 @@
 <?php
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 date_default_timezone_set('America/Los_Angeles');
 
 class products extends CI_Controller {
@@ -51,7 +50,7 @@ class products extends CI_Controller {
         
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-        $data['results'] = $this->product->get_products_by_limit($page);
+        $data['results'] = $this->product->get_products_by_limit($config['per_page'], $page);
         $data['links'] = $this->pagination->create_links();
         
         $this->load->view('all', $data);

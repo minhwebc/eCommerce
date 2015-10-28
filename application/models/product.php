@@ -38,8 +38,8 @@ class product extends CI_model {
     	return $this->db->query($query, $values)->result_array();
     }
 
-    function get_products_by_limit($start){
-        $this->db->limit(2, $start);
+    function get_products_by_limit($limit, $start){
+        $this->db->limit($limit, $start);
         $this->db->from('products');
         $this->db->join('images', 'images.product_id = products.id');
         $query = $this->db->get();
@@ -53,7 +53,6 @@ class product extends CI_model {
         
         return false;
     }
-
   
     //get product information 
     public function get_one($id){

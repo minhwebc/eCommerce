@@ -11,7 +11,6 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
              <ul class="nav navbar-nav">
-                    <li><a href="/dashboard/users">Users</a></li>
                     <li><a href="/dashboard/orders">Orders</a></li>
                     <li><a href="/dashboard/Products">Products</a></li>
             </ul>

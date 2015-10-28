@@ -25,7 +25,7 @@ class users extends CI_Controller {
         if (md5($this->input->post('password')) == $user['password'] && $this->form_validation->run() == true){
             $this->session->set_userdata(array('id' => $user['id'], 'admin' => $user['admin']));
             if ($this->session->userdata('admin')){
-                    redirect ('/dashboard/users');
+                    redirect ('/dashboard');
             }
             redirect('/');
         } else {
@@ -54,7 +54,7 @@ class users extends CI_Controller {
                 $user = $this->user->get_user_by_email($this->input->post('email'));
                 $this->session->set_userdata(array('id' => $user['id'], 'admin' => $user['admin']));
                 if ($this->session->userdata('admin')){
-                    redirect ('/dashboard/users');
+                    redirect ('/dashboard');
                 }
                 redirect('/');
             }           
