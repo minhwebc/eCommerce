@@ -76,7 +76,7 @@
             display: inline;
         }
         
-        .remove {
+        .remove a {
             font-size: smaller;
             color: gray;
         }
@@ -117,23 +117,21 @@
                     </h4>
                     <?php $total += $item['price'] * $item['amount']; ?>
                     
-                    <?php if($newProduct['id'] == $item['id']){ ?>
-                        <p id="success"><i class="fa fa-check"></i> 
-                            Item succesfully added to your cart!</p>
-                    <?php } ?>
+                    <?php if($this->session->flashdata('newProduct') != NULL) {   
+                            if($this->session->flashdata('newProduct')['id'] == $item['id']){ ?>
+                        <p id="success"><i class="fa fa-check"></i>Item quantity succesfully changed!</p>
+                    <?php }} ?>    
                     
-                    <p class="remove"><a href=""></a>Remove</p>
                     
+                    <p class="remove"><a href="/products/remove_from_cart/<?= $item['id'] ?>">Remove</a></p>
                 </div>
             </div>
-        
-
             <?php } ?>
 
         <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-2 col-md-offset-7">
                 <h3 id="total">Cart subtotal: $<?= $total ?></h3>
-            <a id='continue' href="/products/cart"><button class="btn btn-success pull-right">
+            <a id='continue' href="/products/checkout"><button class="btn btn-success pull-right">
                 Proceed to Checkout
                      </button></a>
                 </div>

@@ -63,7 +63,7 @@ class products extends CI_Controller {
                 $exist = true;
                 $products[$count] = $newProduct;
                 $this->session->set_userdata('products', $products);
-                redirect('/products/add/' . $newProduct['id']);            
+                redirect('/products/add_to_cart/' . $newProduct['id']);            
             }
             $count++;
         }
@@ -77,10 +77,31 @@ class products extends CI_Controller {
         //push it into the session cart
         array_push($products, $newProduct); 
         $this->session->set_userdata('products', $products);
-        redirect('/products/add/' . $newProduct['id']);
+        redirect('/products/add_to_cart/' . $newProduct['id']);
+    }
+    
+    public function remove_from_cart($id) {
+        $amount = $this->session->userdata('cart_amount');
+        $products = $this->session->userdata('products');
+        $update = array();
+        foreach ($products as $product) {
+            if ($product['id'] != $id) {
+                array_push($update, $product);
+            } else {
+                $this->session->set_userdata('cart_amount', ($amount - $product['amount']));   
+            }
+        }
+        $this->session->set_userdata('products', $update);
+        redirect('/products/cart');
     }
 
-    public function add($id) {
+    public function add_to_cart($id) {
+        $added = $this->product->get_product_by_id($id);
+        $this->session->set_flashdata('newProduct', $added);
+        redirect('/products/cart');
+    }
+    
+    public function cart(){
         $products = $this->session->userdata('products');
         $items = array();
         foreach($products as $product){
@@ -93,15 +114,15 @@ class products extends CI_Controller {
             array_push($items, $item);
         }
         
-        $recentlyAdded = $this->product->get_product_by_id($id);
-        $this->load->view('addtocart', array(
-            'newProduct' => $recentlyAdded,
+        $this->session->keep_flashdata('newProduct'); 
+        $this->load->view('cart', array(
             'items' => $items
-        ));
+        )); 
     }
+        
     
     //proceed to checkout method
-    public function cart(){
+    public function checkout(){
         $products = $this->session->userdata('products');
         $items = array();
         foreach($products as $product){
@@ -119,6 +140,11 @@ class products extends CI_Controller {
         $this->load->view('search_result', array('products'=>$products));
     }
 
+    
+    
+    
+    
+    //Should be in Dashboard
     //add another product to the inventory
     public function create(){
        $this->product->create($this->input->post());
