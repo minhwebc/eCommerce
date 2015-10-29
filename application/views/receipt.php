@@ -71,7 +71,7 @@
             <hr>
             <h2>Thank you for your order</h2>
             <hr>
-            <p>Your order was recieved for processing. You should recive a comfirmation of payment by e-mail from SBM as well as
+            <p>Your order was received for processing. You should receive a confirmation of payment by e-mail from SBM as well as
             the information from the product supplier regarding the arrival date of the products.</p>
             <p>If you have any questions about anything, please don't hesitate to ask!</p>
 			<div class="panel panel-default">

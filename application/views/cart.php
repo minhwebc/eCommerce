@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Shipping and Billing</title>
+	<title>Cart</title>
     
     <script>
         $( document ).ready(function() {

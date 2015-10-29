@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Home</title>
+		<title>Admin Dashboard</title>
 		<meta charset="UTF-8">
 
         <style type="text/css">

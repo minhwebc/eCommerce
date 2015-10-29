@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Edit Product</title>
+	<title>Create Product</title>
 
         <style type="text/css">
 
