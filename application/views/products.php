@@ -44,20 +44,13 @@
                 </tr>
                 <?php } ?>
             </table>
-    
-    
 
+            <nav>
+                <ul class="pagination">
+                    <?= $links ?>
+                </ul>
+            </nav>
 
-        <nav>
-            <ul class="pagination">
-                <?= $links ?>
-            </ul>
-                </nav>
-
-     
-    
-    
-    
         </div> 
     </body>
 </html>

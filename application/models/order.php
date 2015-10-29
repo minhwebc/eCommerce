@@ -3,9 +3,33 @@
 class order extends CI_model {
     
     function get_all_orders() {
-        $query = "SELECT * from orders where orders.user_id = ?";
-        $value = $this->session->userdata('user_id'); 
-    	return $this->db->query($query, $values)->result_array();
+        $query = "SELECT orders.id, orders.created_at, orders.total, orders.status, addresses.address, addresses.city, addresses.state, addresses.zipcode, addresses.first_name, addresses.last_name from orders
+                    left join addresses
+                    on orders.billing_id = addresses.id;";
+    	return $this->db->query($query)->result_array();
+    }
+    function get_order_by_id($id){
+        $query = "SELECT orders.id, orders.created_at, orders.total, orders.status, addresses.address, addresses.city, addresses.state, addresses.zipcode, addresses.first_name, addresses.last_name from orders
+                    left join addresses
+                    on orders.shipping_id = addresses.id
+                    where orders.id = ?";
+        $values = array($id);
+        $shipping = $this->db->query($query, $values)->row_array();
+        $query = "SELECT orders.id, orders.created_at, orders.total, orders.status, addresses.address, addresses.city, addresses.state, addresses.zipcode, addresses.first_name, addresses.last_name from orders
+                    left join addresses
+                    on orders.billing_id = addresses.id
+                    where orders.id = ?";
+        $values = array($id);
+        $billing = $this->db->query($query, $values)->row_array();
+        $query = "SELECT * from orders 
+                left join product_orders
+                on product_orders.order_id = orders.id
+                left join products
+                on products.id = product_orders.product_id
+                where orders.id = ?";
+        $values = array($id);
+        $products = $this->db->query($query, $values)->result_array();
+        return array('ship'=>$shipping, 'bill'=>$billing, 'products'=>$products);   
     }
 
     function insert_order($info, $total) {
@@ -86,6 +110,30 @@ class order extends CI_model {
         $query="SELECT orders.created_at from orders where orders.id = ?";
         $values = array($order_id);
         return $this->db->query($query, $values)->row_array();
+    }
+
+    public function update_status_order($info)
+    {
+        $data = array('status'=>$info['status']);
+        $this->db->where('id',$info['order_id']);
+        $this->db->update('orders',$data);
+    }
+
+    public function update_search($str)
+    {
+        if($str == 'shipped'){
+            $query = "SELECT orders.id, orders.created_at, orders.total, orders.status, addresses.address, addresses.city, addresses.state, addresses.zipcode, addresses.first_name, addresses.last_name from orders
+                    left join addresses
+                    on orders.billing_id = addresses.id
+                    where orders.status = 'Shipped';";
+            return $this->db->query($query)->result_array();
+        }else{
+            $query = "SELECT orders.id, orders.created_at, orders.total, orders.status, addresses.address, addresses.city, addresses.state, addresses.zipcode, addresses.first_name, addresses.last_name from orders
+                    left join addresses
+                    on orders.billing_id = addresses.id
+                    where orders.status = 'Order in process';";
+            return $this->db->query($query)->result_array();
+        }
     }
 }
 

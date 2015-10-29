@@ -15,26 +15,17 @@
                 vertical-align:top;
             }
             
+            h3 {
+                font-size: 90%;    
+            }
+            
         </style>
 	</head>
 	<body>     
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
             <h1> Welcome! </h1>
-            <div class ="sort_controls">
-                <label> Sorted by:</label>
-                <!-- Single button -->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Most recent <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Most recent</a></li>
-                        <li><a href="#">Lowest to Highest</a></li>
-                        <li><a href="#">Highest to Lowest</a></li>
-                    </ul>
-                </div>     
-            </div>
+            <h3> Our Most Recent Stickers:</h3>
             <div id ="listing_wrapper">    
             <?php $count=0;
                 foreach($products as $product){ 

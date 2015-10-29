@@ -89,6 +89,19 @@ class dashboard extends CI_Controller {
         $this->product->delete($id);
         redirect("/dashboard/products");
     }
+    
+    public function update_search(){
+        $this->load->model('order');
+        if($this->input->post('search') == 'show_all'){
+            redirect('/dashboard/orders');
+        } else if($this->input->post('search') == 'shipped') {
+            $orders = $this->order->update_search('shipped');
+            $this->load->view('orders', array('orders' => $orders));
+        } else {
+            $orders = $this->order->update_search('process');
+            $this->load->view('orders', array('orders' => $orders));
+        }
+    }
 }
 
 ?>

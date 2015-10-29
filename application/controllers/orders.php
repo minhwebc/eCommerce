@@ -34,6 +34,15 @@ class Orders extends CI_Controller
         $this->session->sess_destroy();
         $this->load->view('receipt', array('products' => $items, 'order_date'=>$order_date, 'total' => $total));
     }
+    
+    public function show($id){
+        $info = $this->order->get_order_by_id($id);
+        $this->load->view('show_order', $info);
+    }
+    public function update_status(){
+        $this->order->update_status_order($this->input->post());
+        redirect('/dashboard/orders');
+    }
 }
 
 ?>
