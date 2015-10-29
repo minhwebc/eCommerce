@@ -16,7 +16,7 @@
              <ul class="nav navbar-nav">
             </ul>
             <ul class="nav navbar-nav navbar-right" id="nav-right">
-                <li><a href="/products/all">Show All Stickers</a></li>
+                <li><a href="/products/stickers/all">Show All Stickers</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
                          aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
@@ -25,8 +25,6 @@
                             <li><a href="/users/signin">Sign In</a></li>
                             <li><a href="/users/register">Register</a></li>
                         <?php } else { ?>
-                            <li><a href="/orders">Your Orders</a></li>
-                            <li><a href="/users/account">Account Settings</a></li>
                             <li><a href="/logoff">Log off</a></li>
                         <?php } ?>
                     </ul>

@@ -31,7 +31,7 @@ class dashboard extends CI_Controller {
         $config = array();
         $config['base_url'] = ('/dashboard/products');
         $config['total_rows'] = $this->product->count_products();
-        $config['per_page'] = 4;
+        $config['per_page'] = 5;
         $config['attributes'] = array('class' => 'inactive');
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';

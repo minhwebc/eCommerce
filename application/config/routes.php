@@ -12,5 +12,5 @@ $route['logoff'] = 'users/logoff';
 $route['products/show/(:any)'] = 'products/show/$1';
 $route['dashboard/edit/(:any)'] = "dashboard/edit/$1";
 $route['dashboard/delete/(:any)'] = "dashboard/delete/$1";
-$route['/products/all/(:any)'] = '/products/all/$1';
+$route['/products/stickers/(:any)'] = '/products/stickers/$1';
 $route['orders/show/(:any)'] = "orders/show/$1";

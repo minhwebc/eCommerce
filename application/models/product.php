@@ -2,9 +2,42 @@
 
 class product extends CI_model {
     
-    function count_products() {
-        return $this->db->count_all('products');
-    }
+    
+    function count_products($type) {
+        if ($type == 'seasonal') {
+            $s = $this->db->query("select count(products.id) as num
+                        from products 
+                        join categorization on categorization.product_id = products.id
+                        join categories on categorization.category_id = categories.id
+                        where categories.name = 'Seasonal'")->row_array();
+            return intval($s['num']);
+        } else if ($type == 'food') {
+            $s = $this->db->query("select count(products.id) as num
+                        from products 
+                        join categorization on categorization.product_id = products.id
+                        join categories on categorization.category_id = categories.id
+                        where categories.name = 'Food'")->row_array();
+            return intval($s['num']);
+        } else if ($type == 'reminders') {
+            $s = $this->db->query("select count(products.id) as num
+                        from products 
+                        join categorization on categorization.product_id = products.id
+                        join categories on categorization.category_id = categories.id
+                        where categories.name = 'Reminders'")->row_array();
+            return intval($s['num']);
+        } else if ($type == 'other') {
+            $s = $this->db->query("select count(products.id) as num
+                        from products 
+                        join categorization on categorization.product_id = products.id
+                        join categories on categorization.category_id = categories.id
+                        where categories.name = 'Other'")->row_array();
+            return intval($s['num']);
+        } else {
+            return $this->db->count_all('products');
+        }
+    } 
+    
+    
     
     function get_all_products() {
         $query = "select * from products join images on images.product_id = products.id"; 
@@ -55,10 +88,15 @@ class product extends CI_model {
     	return $this->db->query($query, $values)->result_array();
     }
 
-    function get_products_by_limit($limit, $start){
+    function get_products_by_limit($limit, $start, $type){
         $this->db->limit($limit, $start);
         $this->db->from('products');
         $this->db->join('images', 'images.product_id = products.id');
+        $this->db->join('categorization', 'categorization.product_id = products.id');
+        $this->db->join('categories', 'categorization.category_id = categories.id');
+        if ($type != 'all'){
+            $this->db->where('categories.name', $type);
+        }
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
