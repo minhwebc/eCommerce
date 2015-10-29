@@ -15,8 +15,13 @@
                 vertical-align:top;
             }
             
-            h3 {
-                font-size: 90%;    
+            #subtitle {
+                font-size: 20px;
+                margin-bottom: 25px;
+            }
+            
+            #footer {
+                text-align: right;   
             }
             
         </style>
@@ -24,8 +29,8 @@
 	<body>     
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
-            <h1> Welcome! </h1>
-            <h3> Our Most Recent Stickers:</h3>
+
+            <h3 id="subtitle"> Check out our Newest Stickers! </h3>
             <div id ="listing_wrapper">    
             <?php $count=0;
                 foreach($products as $product){ 
@@ -40,15 +45,9 @@
                         <?php }
                 } ?>
                 </div>
-             <nav>
-              <ul class="pagination">
-                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="#">4 <span class="sr-only">(current)</span></a></li>
-              </ul>
-            </nav>
+             <div id="footer">
+                <a href="/products/all">See more</a>
+            </div>
         </div> 
     </body>
 </html>

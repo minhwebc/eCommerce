@@ -1,0 +1,43 @@
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('1', 'Colorful Bats', '2.99', 'Multicolored bats', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('2', 'Date Night', '2.99', 'Be ready for your date!', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('3', 'Donut Days', '2.99', 'Want a donut?', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('4', 'Mailinator', '2.99', 'No stamps included', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('5', 'Tiny Grocery Bags', '2.99', 'Need a visual reminder for groceries?', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('6', 'Garbage Days', '2.99', 'Never forget to rid yourself of trash', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('7', 'Halloween Themed Stickers', '2.99', 'Ready for Halloween?', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('8', 'Scream for Ice Cream', '2.99', 'Is it hot? Come get an ice cream cone!', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('9', 'Summer Popsicles', '2.99', 'Popsicles that won\'t melt', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('10', 'Shake it Off', '2.99', 'Better than a real milkshake', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('11', 'Stargaze', '2.99', 'Don\'t wait until it\'s night time to look at the stars!', '10', '0');
+INSERT INTO `ecommerce`.`products` (`id`, `name`, `price`, `description`, `inventory_count`, `quantity_sold`) VALUES ('12', 'Turds', '3.99', 'Stick it everywhere', '10', '0');
+
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('bats.jpg', '1');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('date.jpg', '2');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('donuts.jpg', '3');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('envelopes.jpg', '4');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('grocery.jpg', '5');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('gsw.jpg', '6');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('halloween.jpg', '7');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('icecream.jpg', '8');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('popsicle.jpg', '9');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('shakes.jpg', '10');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('stars.jpg', '11');
+INSERT INTO `ecommerce`.`images` (`source`, `product_id`) VALUES ('turds.jpg', '12');
+
+INSERT INTO `ecommerce`.`categories` (`id`, `name`) VALUES ('1', 'Food');
+INSERT INTO `ecommerce`.`categories` (`id`, `name`) VALUES ('2', 'Seasonal');
+INSERT INTO `ecommerce`.`categories` (`id`, `name`) VALUES ('3', 'Reminders');
+INSERT INTO `ecommerce`.`categories` (`id`, `name`) VALUES ('4', 'Other');
+
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('2', '1');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('3', '2');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('1', '3');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('3', '4');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('3', '5');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('3', '6');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('2', '7');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('1', '8');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('1', '9');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('1', '10');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('4', '11');
+INSERT INTO `ecommerce`.`categorization` (`category_id`, `product_id`) VALUES ('4', '12');

@@ -20,7 +20,7 @@ class products extends CI_Controller {
     }
     
     public function index() {
-        $products = $this->product->get_all_products();
+        $products = $this->product->get_recent_products();
         $this->load->view('index', array('products' => $products));
     }
     
@@ -28,7 +28,7 @@ class products extends CI_Controller {
         $config = array();
         $config['base_url'] = ('/products/all');
         $config['total_rows'] = $this->product->count_products();
-        $config['per_page'] = 2;
+        $config['per_page'] = 4;
         $config['attributes'] = array('class' => 'inactive');
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';

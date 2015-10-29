@@ -11,6 +11,11 @@ class product extends CI_model {
         return $this->db->query($query)->result_array();
     }
     
+    function get_recent_products() {
+        $query = "select * from products join images on images.product_id = products.id limit 3"; 
+        return $this->db->query($query)->result_array();
+    }
+    
     function get_product_by_id($id) {
     	$query = "SELECT * FROM products
                   join images
