@@ -62,11 +62,12 @@ class dashboard extends CI_Controller {
 
     //load create view page
     public function create(){
-        $this->load->view("create");
+        $cat_results=$this->product->get_categories();
+        $this->load->view('create', array(
+            'cat_results'=> $cat_results));
     }
     
  
-
     public function edit($id){
         $product = $this->product->get_one($id);
         $this->load->view("edit", array(

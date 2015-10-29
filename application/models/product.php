@@ -27,6 +27,11 @@ class product extends CI_model {
     	return $this->db->query($query, $values)->row_array();
     }
 
+    function get_categories(){
+        $query = "SELECT id, name FROM categories";
+        return $this->db->query($query)->result_array();
+    }
+
     public function update_count($product_id, $sold, $count)
     {
         $data = array('quantity_sold'=>$sold, 'inventory_count'=>$count);

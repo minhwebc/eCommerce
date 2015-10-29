@@ -53,10 +53,10 @@
 			<div class="form-group">
 			  <label for="sell">Select list:</label>
 			  <select name ="category" class="form-control" id="sell">
-			    <option>Food</option>
-			    <option>Seasonal</option>
-			    <option>Bills</option>
-			  </select>
+          <?php foreach($cat_results as $cat_result){?>
+			    <option value = "<?= $cat_result['id']?>"><?= $cat_result['name']?></option>
+			   <?php }?>
+        </select>
 			</div>
 
 		<div class="form-group">
