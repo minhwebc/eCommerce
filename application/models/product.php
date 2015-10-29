@@ -37,7 +37,9 @@ class product extends CI_model {
         }
     } 
     
-    
+    function count_all_products() {
+        return $this->db->count_all('products');
+    } 
     
     function get_all_products() {
         $query = "select * from products join images on images.product_id = products.id"; 
@@ -97,6 +99,22 @@ class product extends CI_model {
         if ($type != 'all'){
             $this->db->where('categories.name', $type);
         }
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            foreach($query->result() as $row) {
+                $data[] = $row;   
+            }
+            return $data;
+        }
+        
+        return false;
+    }
+    
+    function get_all_products_by_limit($limit, $start){
+        $this->db->limit($limit, $start);
+        $this->db->from('products');
+        $this->db->join('images', 'images.product_id = products.id');
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
