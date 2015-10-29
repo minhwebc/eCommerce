@@ -64,13 +64,19 @@ class dashboard extends CI_Controller {
 	}
     
 
+    //load create view page
     public function create(){
         $this->load->view("create");
     }
     
+    //create new product
     public function create_product(){
         $this->product->create($this->input->post());   
-        redirect("/dashboard/products/");
+        
+        // var_dump($this->input->post());
+        // die();
+
+        redirect("/dashboard/products");
     }
 
     public function edit($id){
@@ -80,11 +86,13 @@ class dashboard extends CI_Controller {
         ));
     }
 
+    //update item
     public function update_product(){
         $this->product->update_product($this->input->post());
         redirect("/dashboard/products");
     }
 
+    //delete item from database
     public function delete($id){
         $this->product->delete($id);
         redirect("/dashboard/products");

@@ -31,7 +31,7 @@
 
 	<h2>Add a product</h2>	
 	
-  <form class="form-horizontal" action="/dashboard/create" method="post">
+  <form class="form-horizontal" action="/dashboard/create_product" method="post">
 		<input type="hidden" name="id" value="">
   		<div class="form-group">
     		<label for="name" class="col-sm-2 control-label">Name: </label>
@@ -64,7 +64,7 @@
 			</div>
 
 		<div class="form-group">
-    		<label for="name" class="col-sm-2 control-label">or add a new category:</label>
+    		<label for="name" class="col-sm-2 control-label">or add a new category: </label>
     		<div class="col-sm-6">
       			<input type="text" class="form-control" id="prod_name" placeholder="New category....">
     		</div>
