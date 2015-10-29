@@ -23,20 +23,25 @@
             #footer {
                 text-align: right;   
             }
-            #img{
-                width: 100%;
+            
+            #img {
+                text-align: center;
                 margin-bottom: 20px;
             }
-            body{
-                background-image: url("/assets/images/background.jpeg");
-            }
+
             
         </style>
 	</head>
 	<body>     
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
-            <img id='img' src="/assets/images/slide01.png">
+            <div id='img'>
+                <?php if($this->session->userdata('style') == 0) { ?>
+                    <img src="/assets/images/rainbow.png">
+                <?php } else { ?>
+                    <img src="/assets/images/slide01.png">
+                <?php } ?>
+            </div>
             <h3 id="subtitle"> Check out our Newest Stickers! </h3>
             <div id ="listing_wrapper">    
             <?php $count=0;

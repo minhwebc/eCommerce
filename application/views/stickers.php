@@ -39,6 +39,11 @@
                 width: 200px;   
             }
             
+            #categories a {
+                color: #0D3A61  ;
+                font-size: 14px;
+            }
+            
         </style>
 	</head>
 	<body>     
