@@ -9,7 +9,7 @@ class dashboard extends CI_Controller {
         $this->load->model('product');
         $this->load->library('pagination');
         $this->load->model('order');
-
+        $this->load->helper(array('form', 'url'));
         
         if (!$this->session->userdata('admin')) {
             redirect('/');
@@ -60,13 +60,19 @@ class dashboard extends CI_Controller {
 	}
     
 
+    //load create view page
     public function create(){
         $this->load->view("create");
     }
     
+    //create new product
     public function create_product(){
         $this->product->create($this->input->post());   
-        redirect("/dashboard/products/");
+        
+        // var_dump($this->input->post());
+        // die();
+
+        redirect("/dashboard/products");
     }
 
     public function edit($id){
@@ -76,16 +82,18 @@ class dashboard extends CI_Controller {
         ));
     }
 
+    //update item
     public function update_product(){
         $this->product->update_product($this->input->post());
         redirect("/dashboard/products");
     }
 
+    //delete item from database
     public function delete($id){
         $this->product->delete($id);
         redirect("/dashboard/products");
     }
-    
+
     public function update_search() {
         if (!$this->input->post('search') || 
             $this->input->post('search') == 'show_all') {
@@ -96,6 +104,33 @@ class dashboard extends CI_Controller {
             redirect('/dashboard/orders/cancelled');
         } else {
             redirect('/dashboard/orders/process');
+        }
+    }
+
+    public function upload(){
+        $this->load->view('create', array('error' => ' ' ));
+    }
+
+    //add image when creating a new item
+     public function do_upload(){ 
+        $config['upload_path']          = './assets/images';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 100;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+
+        $this->upload->initialize($config);
+        if(! $this->upload->do_upload('userfile')){
+            $error = array('error' => $this->upload->display_errors());
+            var_dump($error);
+            die();
+            $this->load->view('create', $error);        
+        }else{
+            $data = array('upload_data' => $this->upload->data());
+            $file_path = "assets/images/".$data["upload_data"]["file_name"];
+             // echo $file_path;
+             // die();
+            redirect("/dashboard/create_product");
         }
     }
 

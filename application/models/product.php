@@ -63,9 +63,12 @@ class product extends CI_model {
 
     // admin create new product
     public function create($post){
-        $query = "INSERT INTO products (name, price, description, inventory_count, created_at, updated_at) VALUES (?,?,?,? NOW(),NOW())";
-        $values = array($post["name"], $post["price"], $post["description"], $post["inventory"]);
+         // var_dump($post);
+         // die();
+        $query = "INSERT INTO products (name, price, description, inventory_count, created_at, updated_at) VALUES (?,?,?,?, NOW(),NOW())";
+        $values = array($post["name"], $post["price"], $post["description"], $post["inventory_count"]);
         return $this->db->query($query,$values);
+
     }
 
     // admin update or change product details 
