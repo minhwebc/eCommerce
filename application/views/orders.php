@@ -3,11 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
         <title>All Orders</title>
-        <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+
         <script>
             
             $( document ).ready(function() {
@@ -76,7 +72,7 @@
                             <select class="<?= $order->status ?>" name="status">
                                 <option <?php if($order->status == 'Order in process'){
                                         echo "selected = 'selected'"; } ?> value="process">Processing</option>
-                                <option <?php if($order->status == 'Shipped'){
+                                <option <?php if($order->status == 'shipped'){
                                         echo "selected = 'selected'"; } ?> value="shipped">Shipped</option>
                                 <option <?php if($order->status == 'Cancelled'){
                                         echo "selected = 'selected'"; } ?> value="cancelled">Cancelled</option

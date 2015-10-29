@@ -3,14 +3,12 @@
 class user extends CI_model {
 
     function add_user($user) {   
-        $allAdmins = $this->db->query("select * from users where admin = true")->result_array();
-        empty($allAdmins) ? $admin = true : $admin = false;
         
         $query = "insert into users (email, first_name, last_name, password, admin, created_at, updated_at)
                     values (?, ?, ?, ?, ?, NOW(), NOW())";
                     
         $values = array($user['email'], $user['first_name'], $user['last_name'], 
-                        $user['password'], $admin);
+                        $user['password'], true);
 
         return $this->db->query($query, $values);
     }    
