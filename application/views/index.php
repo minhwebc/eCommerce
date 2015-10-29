@@ -23,13 +23,20 @@
             #footer {
                 text-align: right;   
             }
+            #img{
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            body{
+                background-image: url("/assets/images/background.jpeg");
+            }
             
         </style>
 	</head>
 	<body>     
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
-
+            <img id='img' src="/assets/images/slide01.png">
             <h3 id="subtitle"> Check out our Newest Stickers! </h3>
             <div id ="listing_wrapper">    
             <?php $count=0;

@@ -8,9 +8,8 @@
     <div class="container-fluid ">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">
-                <img alt="logo" src="/assets/images/logo.png">
             </a>
-            <a class="navbar-brand" id="company_name" href="/">Sticker <span id="black">Black</span> Market</a>
+            <a class="navbar-brand" id="company_name" href="/"><span id="black">STICKAS BLACK MARK3T</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
              <ul class="nav navbar-nav">
@@ -23,11 +22,9 @@
                     <ul class="dropdown-menu">
                         <?php if (!$this->session->userdata('id')) { ?>
                             <li><a href="/users/signin">Sign In</a></li>
-                            <li><a href="/users/register">Register</a></li>
+                            <li><a  href="/users/register">Register</a></li>
                         <?php } else { ?>
-                            <li><a href="/orders">Your Orders</a></li>
-                            <li><a href="/users/account">Account Settings</a></li>
-                            <li><a href="/logoff">Log off</a></li>
+                            <li><a  href="/logoff">Log off</a></li>
                         <?php } ?>
                     </ul>
                 </li> 
