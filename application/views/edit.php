@@ -24,15 +24,7 @@
  
 });
 		</script>
-
-
-
-
-
-
-
-
-
+    
         <style type="text/css">
 
             .jumbotron, .navbar {

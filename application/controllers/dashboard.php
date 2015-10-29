@@ -8,6 +8,7 @@ class dashboard extends CI_Controller {
         $this->output->enable_profiler();
         $this->load->model('product');
         $this->load->library('pagination');
+        $this->load->model('order');
 
         
         if (!$this->session->userdata('admin')) {
@@ -25,11 +26,6 @@ class dashboard extends CI_Controller {
         $this->load->view('users', array('users' => $users));
 	}
     
-    public function orders() {
-        $this->load->model('order');
-        $orders = $this->order->get_all_orders();
-        $this->load->view('orders', array('orders' => $orders));
-	}
     
     public function products() {
         $config = array();
@@ -90,18 +86,50 @@ class dashboard extends CI_Controller {
         redirect("/dashboard/products");
     }
     
-    public function update_search(){
-        $this->load->model('order');
-        if($this->input->post('search') == 'show_all'){
-            redirect('/dashboard/orders');
-        } else if($this->input->post('search') == 'shipped') {
-            $orders = $this->order->update_search('shipped');
-            $this->load->view('orders', array('orders' => $orders));
+    public function update_search() {
+        if (!$this->input->post('search') || 
+            $this->input->post('search') == 'show_all') {
+            redirect('/dashboard/orders/all');
+        } else if ($this->input->post('search') == 'shipped') {
+            redirect('/dashboard/orders/shipped');
+        } else if ($this->input->post('search') == 'cancelled') {
+            redirect('/dashboard/orders/cancelled');
         } else {
-            $orders = $this->order->update_search('process');
-            $this->load->view('orders', array('orders' => $orders));
+            redirect('/dashboard/orders/process');
         }
     }
+
+    public function orders($type) {
+        $config = array();
+        $config['base_url'] = ('/dashboard/orders/' . $type);
+        $config['total_rows'] = $this->order->count_orders($type);
+        $config['per_page'] = 10;
+        $config['attributes'] = array('class' => 'inactive');
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['prev_link'] = '&laquo;';
+        $config['last_tag_open'] ='<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_tag_open'] ='<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_tag_open'] ='<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['uri_segment'] = 4;
+        $this->pagination->initialize($config);
+        
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+
+        $data['results'] = $this->order->get_orders_by_limit($config['per_page'], $page, $type);
+        $data['links'] = $this->pagination->create_links();
+        $data['status'] = $type;
+        $this->load->view('orders', $data);
+    }
+
 }
 
 ?>

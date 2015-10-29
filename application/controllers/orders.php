@@ -24,8 +24,7 @@ class Orders extends CI_Controller
         $order_date = $this->order->get_date($info['order_id']);
         $products = $info['products'];
         $items = array();
-        foreach($products as $product)
-        {
+        foreach($products as $product){
             $item = $this->product->get_product_by_id($product['id']);
             $amount = array('amount' => $product['amount']);
             array_push($item, $amount);
@@ -39,9 +38,10 @@ class Orders extends CI_Controller
         $info = $this->order->get_order_by_id($id);
         $this->load->view('show_order', $info);
     }
+    
     public function update_status(){
         $this->order->update_status_order($this->input->post());
-        redirect('/dashboard/orders');
+        redirect('/dashboard/orders/' . ($this->input->post('status')));
     }
 }
 

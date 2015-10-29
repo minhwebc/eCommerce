@@ -2,6 +2,27 @@
 
 class order extends CI_model {
     
+    function count_orders($type) {
+        if ($type == 'shipped') {
+            $s = $this->db->query("select count(id) as num
+                        from orders 
+                        where status = 'shipped'")->row_array();
+            return intval($s['num']);
+        } else if ($type == 'process') {
+            $p = $this->db->query("select count(id) as num
+                        from orders 
+                        where status = 'order in process'")->row_array();
+            return intval($p['num']);
+        } else if ($type == 'cancelled') {
+            $c = $this->db->query("select count(id) as num
+                        from orders 
+                        where status = 'order in cancelled'")->row_array();
+            return intval($c['num']);
+        } else {
+            return $this->db->count_all('orders');
+        }
+    }
+    
     function get_all_orders() {
         $query = "SELECT orders.id, orders.created_at, orders.total, orders.status, addresses.address, addresses.city, addresses.state, addresses.zipcode, addresses.first_name, addresses.last_name from orders
                     left join addresses
@@ -32,6 +53,27 @@ class order extends CI_model {
         return array('ship'=>$shipping, 'bill'=>$billing, 'products'=>$products);   
     }
 
+    function get_orders_by_limit($limit, $start, $status){
+        $this->db->limit($limit, $start);
+        $this->db->from('orders');
+        $this->db->join('users', 'users.id = orders.user_id');
+        $this->db->join('addresses', 'billing_id = addresses.id');
+        if ($status != 'all') {
+            if($status == 'process') { $status = 'order in process'; }
+            $this->db->where('status', $status);
+        }
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            foreach($query->result() as $row) {
+                $data[] = $row;   
+            }
+            return $data;
+        }
+        
+        return false;
+    }
+    
+    
     function insert_order($info, $total) {
 
     	$bill_id;
