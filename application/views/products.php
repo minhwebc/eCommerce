@@ -39,7 +39,7 @@
                     <td><?= $product->name ?></a></td>
                     <td><?= $product->price ?></td>
                     <td><?= $product->inventory_count ?></td>
-                    <td></td>
+                    <td><?= $product->quantity_sold ?></td>
                     <td><a href="/dashboard/edit/<?= $product->id ?>">Edit</a> | <a href="/dashboard/delete/<?= $product->id ?>">Delete</a></td>
                 </tr>
                 <?php } ?>

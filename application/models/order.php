@@ -135,6 +135,11 @@ class order extends CI_model {
     	foreach($products as $product)
     	{
     		$this->insert_product($order_id, $product['id'], $product['amount']);//insert into the product_orders table
+            $this->load->model('product');
+            $item = $this->product->get_product_by_id($product['id']);
+            $item['quantity_sold'] = $item['quantity_sold'] + $product['amount'];
+            $item['inventory_count'] = $item['inventory_count'] - $product['amount'];
+            $this->product->update_count($product['id'], $item['quantity_sold'], $item['inventory_count']);
     	}
         return array('products' => $products, 'order_id' => $order_id);
     }

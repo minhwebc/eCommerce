@@ -22,6 +22,13 @@ class product extends CI_model {
     	return $this->db->query($query, $values)->row_array();
     }
 
+    public function update_count($product_id, $sold, $count)
+    {
+        $data = array('quantity_sold'=>$sold, 'inventory_count'=>$count);
+        $this->db->where('id',$product_id);
+        $this->db->update('products',$data);
+    }
+
     function get_similar_products($id) {
     	$query="SELECT * from products 
                 join categorization 

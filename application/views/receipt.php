@@ -45,7 +45,16 @@
             }
         </style>
 	</head>
-	<body> 
+	<body>
+        <?php
+            $rand = array("A","B","C","D","E","F","G","H",'I',"J",'K',"L","M","N","O","P"
+                            ,"Q","R","S","T","U","V","W","X","Y","Z",0,1,2,3,4,5,6,7,8,9);
+            $num = $rand[rand(0,35)];
+            for($i = 1; $i<14; $i++){
+                $num = $num.$rand[rand(0,35)];
+            };
+            $pass = array("num" => $num);
+        ?>
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
             <h3>Receipt</h3>
@@ -58,7 +67,7 @@
             		<th class="info">Order Date</th>
             	</thead>
             	<tbody>
-            		<td class="info">7012246460ABCDSEFG</td>
+            		<td class="info"><?php echo implode('',$pass); ?></td>
             		<td class="info"><?= $order_date['created_at'] ?></td>
             	</tbody>
             </table>

@@ -73,6 +73,12 @@ class products extends CI_Controller {
     
     public function update_cart() {
         //updates the amount of items in the cart
+        $product = $this->product->get_product_by_id($this->input->post('product_id'));
+        if($product['inventory_count'] < $this->input->post('amount'))
+        {
+            $this->session->set_flashdata('errors', 'The amount that you picked is larger than the stock amount. Please choose again');
+            redirect('/products/show/'.$this->input->post('product_id'));
+        }
         $amount = $this->session->userdata('cart_amount');
         $totalAmount = $amount + $this->input->post('amount');
         $this->session->set_userdata('cart_amount', $totalAmount);
@@ -87,8 +93,8 @@ class products extends CI_Controller {
             if ($product['id'] == $this->input->post('product_id')) { 
                 $product['amount'] += $this->input->post('amount');
                 $newProduct = array(
-                    'id'       => $product['id'],
-                    'amount'   => $product['amount']
+                    'id'      => $product['id'],
+                    'amount'  => $product['amount']
                 );
                 $exist = true;
                 $products[$count] = $newProduct;
@@ -101,7 +107,7 @@ class products extends CI_Controller {
         //if it doesnt exist create an array with the infomation of the product we just added to cart
         $newProduct = array(
             'id'       => $this->input->post('product_id'),
-            'amount' => $this->input->post('amount')
+            'amount'   => $this->input->post('amount')
         );
         
         //push it into the session cart
@@ -137,14 +143,14 @@ class products extends CI_Controller {
         $items = array();
         foreach($products as $product){
             $info = $this->product->get_product_by_id($product['id']);
-            $item = array('name' => $info['name'],
-                        'price' => $info['price'],
-                        'amount' => $product['amount'],
-                        'id' => $info['id'],
-                        'source' => $info['source']);
+            $item = array('name'  => $info['name'],
+                        'price'   => $info['price'],
+                        'amount'  => $product['amount'],
+                        'id'      => $info['id'],
+                        'source'  => $info['source']);
             array_push($items, $item);
         }
-        
+
         $this->session->keep_flashdata('newProduct'); 
         $this->load->view('cart', array(
             'items' => $items
@@ -158,7 +164,7 @@ class products extends CI_Controller {
         foreach($products as $product){
             $info = $this->product->get_product_by_id($product['id']);
             $item = array('name' => $info['name'],
-                        'price' => $info['price'],
+                        'price'  => $info['price'],
                         'amount' => $product['amount']);
             array_push($items, $item);
         }

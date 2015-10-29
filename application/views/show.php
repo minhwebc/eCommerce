@@ -52,8 +52,12 @@
                 <div class="col-md-4 col-md-offset-2">
                     <img src="/assets/images/<?= $product['source'] ?>">
                 </div>
-                
                 <div class="col-md-4">
+                    <?php if($this->session->flashdata('errors')) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $this->session->flashdata('errors');?>
+                        </div>
+                    <?php } ?>
                     <h1><?= $product['name'] ?></h1>
                     <p><?= $product['description'] ?></p>
                     <form action="/products/update_cart/" method="post">
@@ -61,12 +65,29 @@
                          <option value="1">1 Sticker Set ($<?= $product['price'] ?>)</option>
                         <?php for ($i = 2; $i <= 4; $i++) { ?>
                             <option value="<?= $i ?>"><?= $i ?> Sticker Sets ($<?= $product['price'] * $i ?>)</option>
-                        <?php } ?>
+                        <?php }?>
                         </select>
-                        <input type="hidden" name="name" value="<?= $product['name'] ?>">
-                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                        <br>
+                        <?php if($product['inventory_count'] <= 10 && $product['inventory_count'] > 1){ ?>
+                            <div class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                <?= $product['inventory_count'] ?> left in stock
+                            </div>
+                            <input type="hidden" name="name" value="<?= $product['name'] ?>">
+                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
 
-                        <button id="addToCart" type="submit" class="btn btn-default">Add to Cart</button>
+                            <button id="addToCart" type="submit" class="btn btn-default">Add to Cart</button>
+                        <?php }else if ($product['inventory_count'] == 0){ ?>
+                            <div class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                OUT OF STOCK
+                            </div>   
+                        <?php }else{ ?>
+                            <input type="hidden" name="name" value="<?= $product['name'] ?>">
+                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                        <?php } ?>
                     </form>
                 </div>
             </div>
