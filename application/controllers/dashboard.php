@@ -8,6 +8,7 @@ class dashboard extends CI_Controller {
         $this->output->enable_profiler();
         $this->load->model('product');
         $this->load->library('pagination');
+        $this->load->helper(array('form', 'url'));
 
         
         if (!$this->session->userdata('admin')) {
@@ -97,7 +98,38 @@ class dashboard extends CI_Controller {
         $this->product->delete($id);
         redirect("/dashboard/products");
     }
-    
+
+
+    public function upload(){
+        $this->load->view('create', array('error' => ' ' ));
+    }
+
+    //add image when creating a new item
+     public function do_upload(){ 
+        $config['upload_path']          = './assets/images';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 100;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+
+        // $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+         //var_dump($this->upload->data());
+         //die();
+        if(! $this->upload->do_upload('userfile')){
+            $error = array('error' => $this->upload->display_errors());
+            var_dump($error);
+            die();
+            $this->load->view('create', $error);        
+        }else{
+            $data = array('upload_data' => $this->upload->data());
+            $file_path = "assets/images/".$data["upload_data"]["file_name"];
+             // echo $file_path;
+             // die();
+            redirect("/dashboard/create_product");
+        }
+    }
+
     public function update_search(){
         $this->load->model('order');
         if($this->input->post('search') == 'show_all'){

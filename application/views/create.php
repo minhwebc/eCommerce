@@ -31,7 +31,7 @@
 
 	<h2>Add a product</h2>	
 	
-  <form class="form-horizontal" action="/dashboard/create_product" method="post">
+  <form class="form-horizontal" action="/dashboard/do_upload" enctype="multipart/form-data" method="post">
 		<input type="hidden" name="id" value="">
   		<div class="form-group">
     		<label for="name" class="col-sm-2 control-label">Name: </label>
@@ -79,7 +79,8 @@
 
   		<div class="form-group">
     		<label for="exampleInputFile">Images</label>
-   		 	<input type="file" id="exampleInputFile">
+   		 	<input type="file" name ="userfile" size ="20" id="exampleInputFile">
+        <br>
 			
 			<input type="submit" value="Add a new product">
 		</div>
