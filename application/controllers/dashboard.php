@@ -65,15 +65,7 @@ class dashboard extends CI_Controller {
         $this->load->view("create");
     }
     
-    //create new product
-    public function create_product(){
-        $this->product->create($this->input->post());   
-        
-        // var_dump($this->input->post());
-        // die();
-
-        redirect("/dashboard/products");
-    }
+ 
 
     public function edit($id){
         $product = $this->product->get_one($id);
@@ -112,7 +104,7 @@ class dashboard extends CI_Controller {
     }
 
     //add image when creating a new item
-     public function do_upload(){ 
+     public function create_product(){ 
         $config['upload_path']          = './assets/images';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 100;
@@ -129,8 +121,14 @@ class dashboard extends CI_Controller {
             $data = array('upload_data' => $this->upload->data());
             $file_path = "assets/images/".$data["upload_data"]["file_name"];
              // echo $file_path;
-             // die();
-            redirect("/dashboard/create_product");
+
+            $id = $this->product->create($this->input->post());
+            $this->product->add_category($this->input->post(), $id);    
+            $this->product->add_image($data["upload_data"]["file_name"], $id);   
+        // var_dump($this->input->post());
+        // die();
+
+        redirect("/dashboard/products");
         }
     }
 

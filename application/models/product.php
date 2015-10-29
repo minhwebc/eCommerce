@@ -74,8 +74,36 @@ class product extends CI_model {
          // die();
         $query = "INSERT INTO products (name, price, description, inventory_count, created_at, updated_at) VALUES (?,?,?,?, NOW(),NOW())";
         $values = array($post["name"], $post["price"], $post["description"], $post["inventory_count"]);
-        return $this->db->query($query,$values);
+        $this->db->query($query,$values);
+        return $this->db->query("select MAX(id) AS id FROM products")->row_array(); 
+    }
 
+    
+    //add category to item
+    public function add_category($post, $product_id){
+        // var_dump($post);
+        //  die();
+        if ($this->input->post('category_new') == null) {
+            $query ="SELECT id FROM categories WHERE name = {$post['category']}";
+            $id=$this->db->query($query, $id)->row_array();
+        } else {
+            $query = "INSERT INTO categories (name, created_at, updated_at) VALUES (?, NOW(), NOW())";           
+            $values = array($post["category_new"]);
+            $this->db->query($query,$values);
+            $id = $this->db->insert_id();
+
+        }
+
+        $query = "INSERT into categorization (category_id, product_id, created_at, updated_at) VALUES (?,?, NOW(), NOW())";
+        $values =array($id, $product_id);
+        
+        return $this->db->query($query, $values);
+    }
+    
+    public function add_image($source, $id){
+        $query = "INSERT INTO images (source, product_id, created_at, updated_at) VALUES (?,?,NOW(),NOW())";
+        $values = array($source, $id);
+        return $this->db->query($query, $values);
     }
 
     // admin update or change product details 

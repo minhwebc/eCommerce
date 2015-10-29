@@ -31,7 +31,7 @@
 
 	<h2>Add a product</h2>	
 	
-  <form class="form-horizontal" action="/dashboard/do_upload" enctype="multipart/form-data" method="post">
+  <form class="form-horizontal" action="/dashboard/create_product" enctype="multipart/form-data" method="post">
 		<input type="hidden" name="id" value="">
   		<div class="form-group">
     		<label for="name" class="col-sm-2 control-label">Name: </label>
@@ -56,7 +56,7 @@
 
 			<div class="form-group">
 			  <label for="sell">Select list:</label>
-			  <select class="form-control" id="sell">
+			  <select name ="category" class="form-control" id="sell">
 			    <option>Food</option>
 			    <option>Seasonal</option>
 			    <option>Bills</option>
@@ -66,7 +66,7 @@
 		<div class="form-group">
     		<label for="name" class="col-sm-2 control-label">or add a new category: </label>
     		<div class="col-sm-6">
-      			<input type="text" class="form-control" id="prod_name" placeholder="New category....">
+      			<input type="text" name ="category_new" class="form-control" id="prod_name" placeholder="New category....">
     		</div>
   		</div>
 
