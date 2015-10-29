@@ -31,7 +31,7 @@ class dashboard extends CI_Controller {
         $config = array();
         $config['base_url'] = ('/dashboard/products');
         $config['total_rows'] = $this->product->count_products();
-        $config['per_page'] = 4;
+        $config['per_page'] = 5;
         $config['attributes'] = array('class' => 'inactive');
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';
@@ -62,11 +62,12 @@ class dashboard extends CI_Controller {
 
     //load create view page
     public function create(){
-        $this->load->view("create");
+        $cat_results=$this->product->get_categories();
+        $this->load->view('create', array(
+            'cat_results'=> $cat_results));
     }
     
  
-
     public function edit($id){
         $product = $this->product->get_one($id);
         $this->load->view("edit", array(

@@ -53,7 +53,7 @@
                 } ?>
                 </div>
              <div id="footer">
-                <a href="/products/all">See more</a>
+                <a href="/products/stickers/all">See more</a>
             </div>
         </div> 
     </body>

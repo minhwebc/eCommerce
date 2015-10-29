@@ -24,10 +24,10 @@ class products extends CI_Controller {
         $this->load->view('index', array('products' => $products));
     }
     
-    public function all() {
+    public function stickers($type) {
         $config = array();
-        $config['base_url'] = ('/products/all');
-        $config['total_rows'] = $this->product->count_products();
+        $config['base_url'] = ('/products/stickers/' . $type);
+        $config['total_rows'] = $this->product->count_products($type);
         $config['per_page'] = 4;
         $config['attributes'] = array('class' => 'inactive');
         $config['num_tag_open'] = '<li>';
@@ -44,16 +44,16 @@ class products extends CI_Controller {
         $config['next_link'] = '&raquo;';
         $config['next_tag_open'] = '<li>';
         $config['next_tag_close'] = '</li>';
-        $config['uri_segment'] = 3;
+        $config['uri_segment'] = 4;
         
         $this->pagination->initialize($config);
         
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $data['results'] = $this->product->get_products_by_limit($config['per_page'], $page);
+        $data['results'] = $this->product->get_products_by_limit($config['per_page'], $page, $type);
         $data['links'] = $this->pagination->create_links();
-        
-        $this->load->view('all', $data);
+                
+        $this->load->view('stickers', $data);
     }
     
     public function show($id){
