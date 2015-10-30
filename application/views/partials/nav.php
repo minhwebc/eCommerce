@@ -1,4 +1,3 @@
-
 <?php if($this->session->userdata('style') == 0) { ?>
 
 <!-- Navigation - STICKER -->
@@ -17,7 +16,7 @@
                 <li><a href="/products/stickers/all">Show All Stickers</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-                         aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                         aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <?php if (!$this->session->userdata('id')) { ?>
                             <li><a href="/products/theme">Change Theme</a></li>
@@ -56,7 +55,7 @@
                 <li><a href="/products/stickers/all">Show All Stickers</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-                         aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                         aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <?php if (!$this->session->userdata('id')) { ?>
                             <li><a href="/products/theme">Change Theme</a></li>
