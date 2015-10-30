@@ -11,6 +11,10 @@ class products extends CI_Controller {
         $this->load->model('product');
         $this->load->library('pagination');
         
+        if ($this->session->userdata('style') == NULL) {
+            $this->session->set_userdata('style', 0);   
+        }
+        
         if ($this->session->userdata('cart_amount') == NULL && $this->session->userdata('products') == NULL) {
             $this->session->set_userdata('cart_amount', 0);
             $this->session->set_userdata('products', array()); 
@@ -22,6 +26,15 @@ class products extends CI_Controller {
     public function index() {
         $products = $this->product->get_recent_products();
         $this->load->view('index', array('products' => $products));
+    }
+    
+    public function theme() {
+        if ($this->session->userdata('style') == 0){
+            $this->session->set_userdata('style', 1); 
+        } else {
+            $this->session->set_userdata('style', 0); 
+        }
+        redirect ('/');
     }
     
     public function stickers($type) {
@@ -146,7 +159,7 @@ class products extends CI_Controller {
             $item = array('name'  => $info['name'],
                         'price'   => $info['price'],
                         'amount'  => $product['amount'],
-                        'id'      => $info['id'],
+                        'id'      => $info['product_id'],
                         'source'  => $info['source']);
             array_push($items, $item);
         }

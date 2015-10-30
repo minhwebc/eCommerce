@@ -30,7 +30,7 @@ class dashboard extends CI_Controller {
     public function products() {
         $config = array();
         $config['base_url'] = ('/dashboard/products');
-        $config['total_rows'] = $this->product->count_products();
+        $config['total_rows'] = $this->product->count_all_products();
         $config['per_page'] = 5;
         $config['attributes'] = array('class' => 'inactive');
         $config['num_tag_open'] = '<li>';
@@ -53,9 +53,8 @@ class dashboard extends CI_Controller {
         
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-        $data['results'] = $this->product->get_products_by_limit($config['per_page'], $page);
+        $data['results'] = $this->product->get_all_products_by_limit($config['per_page'], $page);
         $data['links'] = $this->pagination->create_links();
-        
         $this->load->view('products', $data);
 	}
     
@@ -70,8 +69,10 @@ class dashboard extends CI_Controller {
  
     public function edit($id){
         $product = $this->product->get_one($id);
+        $cat_results=$this->product->get_categories();
         $this->load->view("edit", array(
-                "product" => $product
+                "product" => $product,
+                "cat_results" =>$cat_results
         ));
     }
 

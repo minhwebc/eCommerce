@@ -3,13 +3,8 @@
 	<head>
 		<title>Home</title>
 		<meta charset="UTF-8">
+        <?php $this->load->view('partials/meta'); ?>
         <style type="text/css">
-
-            .jumbotron, .navbar {
-                background-color: white;
-                border: 1px solid e7e7e7;
-            }
-            
             .sort_controls {
                 margin: 25px 0px;
                 vertical-align:top;
@@ -23,21 +18,25 @@
             #footer {
                 text-align: right;   
             }
-            #img{
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            body{
-                background-image: url("/assets/images/background.jpeg");
-            }
             
+            #img {
+                text-align: center;
+                margin-bottom: 20px;
+            }  
         </style>
 	</head>
 	<body>     
         <div class="container">
             <?php $this->load->view('partials/nav'); ?>
-            <img id='img' src="/assets/images/slide01.png">
-            <h3 id="subtitle"> CHECK OUT OUR NEWEST STICKERS!!!! </h3>
+            <div id='img'>
+                <?php if($this->session->userdata('style') == 0) { ?>
+                    <img src="/assets/images/rainbow.png">
+                    <h3 id="subtitle"> Check out our Newest Stickers! </h3>
+                <?php } else { ?>
+                    <img src="/assets/images/slide01.png">
+                    <h3 id="subtitle">CHECK OUT OUR NEWEST STICKERS! </h3>
+                <?php } ?>
+            </div>
             <div id ="listing_wrapper">    
             <?php $count=0;
                 foreach($products as $product){ 

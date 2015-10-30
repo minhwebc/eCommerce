@@ -1,45 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Edit Product</title>
-        
-
-		<script>
-		$( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
- 
-   var $target = $( event.currentTarget );
- 
-   $target.closest( '.btn-group' )
-      .find( '[data-bind="label"]' ).text( $target.text() )
-         .end()
-      .children( '.dropdown-toggle' ).dropdown( 'toggle' );
- 
-   return false;
- 
-});
-		</script>
-    
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit Product</title>
+        <?php $this->load->view('partials/meta'); ?>
+        <script>
+            $(document.body).on( 'click', '.dropdown-menu li', function( event ) {
+                var $target = $( event.currentTarget );
+                $target.closest( '.btn-group' ).find( '[data-bind="label"]' )
+                .text( $target.text() ).end().children( '.dropdown-toggle' ).dropdown( 'toggle' );
+                return false;
+            });
+        </script>
         <style type="text/css">
-
-            .jumbotron, .navbar {
-                background-color: white;
-                border: 1px solid e7e7e7;
+            .form-horizontal input {
+                width: 350px;
             }
 
-            .form-horizontal input {
-          	width: 350px;
-          }
-
-          .form-control {
-          	width: 350px;
-          }
-
-            </style>
-</head>
-<body>
-	<div class="container">
-            <?php $this->load->view('partials/nav-admin'); ?>
+            .form-control {
+                width: 350px;
+            }
+         </style>
+    </head>
+    <body>
+	   <div class="container">
+        <?php $this->load->view('partials/nav-admin'); ?>
 
 	<h2>Edit a product</h2>
 	
@@ -61,44 +46,40 @@
 
  		<div class="form-group">
     		<label for="description" class="col-sm-2 control-label">Description: </label>
-    		<div class="col-sm-10">
-      			<textarea class="form-control"  rows ="5" name='description' id="prod_text" value="<?= $product['description'] ?>"></textarea>
+    		<div class="col-sm-6">
+      			<textarea class="form-control"  rows ="5" name='description' id="prod_text" > <?= $product['description'] ?> </textarea>
    			</div>
   		</div>
 
-			<div class="form-group">
-			  <label for="sell">Select list:</label>
-			  <select class="form-control" id="sell">
-			    <option>Food</option>
-			    <option>Seasonal</option>
-			    <option>Bills</option>
-			  </select>
-			</div>
-
-		<div class="form-group">
-    		<label for="name" class="col-sm-2 control-label">or add a new category:</label>
-    		<div class="col-sm-10">
-      			<input type="text" class="form-control" id="prod_name" placeholder="New category....">
-    		</div>
-  		</div>
-
-    <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">Inventory Count </label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control"  name='inventory' id="prod_name"  value ="<?= $product['inventory_count'] ?>">
+        <div class="form-group">
+            <label for="sell" class="col-sm-2 control-label">Select list:</label>
+            <div class="col-sm-6"> 
+                <select class="form-control" id="sell">
+                    <?php foreach($cat_results as $cat_result){?>
+                        <option value = "<?= $cat_result['id']?>"><?= $cat_result['name']?></option>
+                    <?php } ?>
+                <select>
+            </div>
         </div>
-      </div>
+        
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Inventory Count </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  name='inventory' id="prod_name"  value ="<?= $product['inventory_count'] ?>">
+            </div>
+        </div>
 
-
-  		<div class="form-group">
-    		<label for="exampleInputFile">Images</label>
-   		 	<input type="file" id="exampleInputFile">
-			
-			<input type="submit" value="Update">
-		</div>
-		</form>
-
-
-		</div>
-	</body>
-	</html>
+        <div class="form-group">
+            <label for="exampleInputFile" class="col-sm-2 control-label">Images</label>
+            <div class="col-sm-6">
+                <input type="file" id="exampleInputFile">
+            </div>
+        </div>
+                    
+        <div class="form-group" >
+            <div class="col-sm-offset-2 col-sm-2">
+                <input type="submit" value="Update">
+            </div>
+        </div>
+    </form>
+</html>
