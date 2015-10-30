@@ -3,13 +3,8 @@
 	<head>
 		<title>Stickers</title>
 		<meta charset="UTF-8">
+        <?php $this->load->view('partials/meta'); ?>
         <style type="text/css">
-
-            .jumbotron, .navbar {
-                background-color: white;
-                border: 1px solid e7e7e7;
-            }
-            
             .sort_controls {
                 margin: 25px 0px;
                 vertical-align:top;
@@ -23,27 +18,26 @@
                 margin-bottom: 20px;
             }
             
-            #categories h3 {
-                margin: 5px 0px 0px 5px;
-                font-size: 16px;
-                font-weight: bold;
-            }
-            
-            #categories table {
-                margin-top: 10px;
-                margin-left: 30px;  
-                text-align: center;
-            }
-            
-            #categories td {
-                width: 200px;   
-            }
-            
-            #categories a {
-                color: #0D3A61  ;
-                font-size: 14px;
-            }
-            
+                #categories h3 {
+                    margin: 5px 0px 0px 5px;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+
+                #categories table {
+                    margin-top: 10px;
+                    margin-left: 30px;  
+                    text-align: center;
+                }
+
+                #categories td {
+                    width: 200px;   
+                }
+
+                #categories a {
+                    color: #0D3A61  ;
+                    font-size: 14px;
+                }
         </style>
 	</head>
 	<body>     
@@ -60,9 +54,7 @@
                     </tr>
                 </table>
             </div>
-        
             <div id ="listing_wrapper">    
-
                 <?php $count=0;
                 foreach($results as $product){ 
                     if ($count % 2 == 0){ ?>
@@ -77,16 +69,12 @@
                             </div>
                         <?php }
                 } ?>
-                </div>
+            </div>
             <nav>
-
-
-        <nav>
-            <ul class="pagination">
-                <?= $links ?>
-            </ul>
-                </nav>
-
+                <ul class="pagination">
+                    <?= $links ?>
+                </ul>
+            </nav>
         </div> 
     </body>
 </html>

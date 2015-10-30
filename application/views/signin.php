@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<title>Sign In</title>
-		<meta charset="UTF-8">   
+		<meta charset="UTF-8">  
+        <?php $this->load->view('partials/meta'); ?>
         <style type="text/css">
-
             .navbar {
                 background-color: white;  
             }
@@ -32,7 +32,7 @@
                 color: red; 
                 font-size: smaller;
                 font-family: initial;
-            }
+            
             
                 #errors p {
                     margin: 0px;

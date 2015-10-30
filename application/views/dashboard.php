@@ -3,7 +3,7 @@
 	<head>
 		<title>Admin Dashboard</title>
 		<meta charset="UTF-8">
-
+        <?php $this->load->view('partials/meta'); ?>
         <style type="text/css">
 
             .jumbotron, .navbar {

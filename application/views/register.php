@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<title>Register</title>
-		<meta charset="UTF-8">   
+		<meta charset="UTF-8">
+        <?php $this->load->view('partials/meta'); ?>
         <style type="text/css">
-            
             #register {
                 display: block;
                 width: 200px;
@@ -29,11 +29,10 @@
                 font-size: smaller;
                 font-family: initial;
             }
-            
-            #errors p {
-                margin: 0px;
-            }
-
+    
+                #errors p {
+                    margin: 0px;
+                }
         </style>
 	</head>
 	<body> 
@@ -53,7 +52,6 @@
                 <input class="button" type="submit" value="Submit"/>
             </form>
             <p class="margin-left"><a href="/users/signin">Already have an account? Login!</a></p>
-            
         </div>
     </body>
 </html>

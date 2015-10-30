@@ -3,8 +3,8 @@
 	<head>
 		<title>Our Product</title>
 		<meta charset="UTF-8">
+        <?php $this->load->view('partials/meta'); ?>
         <style type="text/css">
-            
             h1 {
                 font-size: 150%;
             }
@@ -42,7 +42,6 @@
             #addToCart {
                 margin-top: 10px;   
             }
-
         </style>
 	</head>
 	<body> 
