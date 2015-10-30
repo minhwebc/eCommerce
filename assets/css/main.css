@@ -31,6 +31,10 @@
     font-size: 40px;
     font-weight: bold;
 }
+h3{
+    font-family: Berlin Sans FB;
+    font-size: 65px;
+}
 
 #nav-right {
     margin-top: 25px;
@@ -45,6 +49,14 @@
 #cart {
     text-align: right;
 }
+a{
+    color: black;
+    font-family: Berlin Sans FB;
+    font-size: 25px;
+}
 body{
     background-image: url("/assets/images/background.jpeg");
+}
+#categories{
+    border: none;
 }

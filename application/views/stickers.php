@@ -25,7 +25,7 @@
             
             #categories h3 {
                 margin: 5px 0px 0px 5px;
-                font-size: 16px;
+                font-size: 22px;
                 font-weight: bold;
             }
             
