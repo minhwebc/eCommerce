@@ -97,49 +97,49 @@
 		  <div class="form-group">
 		    <label for="firstname" class="col-sm-2 control-label">First Name:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="first_name" name="ship_first_name" placeholder="First name...">
+		      <input type="text" class="form-control" id="first_name" name="ship_first_name" placeholder="First name..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="lastname" class="col-sm-2 control-label">Last Name:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="last_name" name="ship_last_name" placeholder="Last name...">
+		      <input type="text" class="form-control" id="last_name" name="ship_last_name" placeholder="Last name..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="address1" class="col-sm-2 control-label">Address:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="address" name="ship_address" placeholder="Address...">
+		      <input type="text" class="form-control" id="address" name="ship_address" placeholder="Address..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="address2" class="col-sm-2 control-label">Address 2:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="address2" name="ship_address2" placeholder="Address 2...">
+		      <input type="text" class="form-control" id="address2" name="ship_address2" placeholder="Address 2..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="city1" class="col-sm-2 control-label">City:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="city" name="ship_city" placeholder="City...">
+		      <input type="text" class="form-control" id="city" name="ship_city" placeholder="City..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="state1" class="col-sm-2 control-label">State:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="state" name="ship_state" placeholder="State...">
+		      <input type="text" class="form-control" id="state" name="ship_state" placeholder="State..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="zipcode1" class="col-sm-2 control-label">Zipcode:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="zipcode" name="ship_zipcode" placeholder="Zipcode...">
+		      <input type="text" class="form-control" id="zipcode" name="ship_zipcode" placeholder="Zipcode..." required>
 		    </div>
 		  </div>
 
@@ -152,42 +152,42 @@
 		  <div class="form-group">
 		    <label for="firstname_b" class="col-sm-2 control-label">First Name:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="first_billing" name="bill_first_name" placeholder="First name...">
+		      <input type="text" class="form-control" id="first_billing" name="bill_first_name" placeholder="First name..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="lastname_b" class="col-sm-2 control-label">Last Name:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="last_billing" name="bill_last_name" placeholder="Last name...">
+		      <input type="text" class="form-control" id="last_billing" name="bill_last_name" placeholder="Last name..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="address1_b" class="col-sm-2 control-label">Address:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="address_billing" name="bill_address" placeholder="Address...">
+		      <input type="text" class="form-control" id="address_billing" name="bill_address" placeholder="Address..."required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="address2_b" class="col-sm-2 control-label">Address 2:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="address2_billing" name="bill_address2" placeholder="Address 2...">
+		      <input type="text" class="form-control" id="address2_billing" name="bill_address2" placeholder="Address 2..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="city1_b" class="col-sm-2 control-label">City:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="city_billing" name="bill_city" placeholder="City...">
+		      <input type="text" class="form-control" id="city_billing" name="bill_city" placeholder="City..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="state1_b" class="col-sm-2 control-label">State:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="state_billing" name="bill_state" placeholder="State...">
+		      <input type="text" class="form-control" id="state_billing" name="bill_state" placeholder="State..." required>
 		    </div>
 		  </div>
 
@@ -201,14 +201,14 @@
 		  <div class="form-group">
 		    <label for="card" class="col-sm-2 control-label">Card:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="card" name="card_num" placeholder="Card number...">
+		      <input type="text" class="form-control" id="card" name="card_num" placeholder="Card number..." required>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		    <label for="code" class="col-sm-2 control-label">Code:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="code" name="security_code" placeholder="Security code...">
+		      <input type="text" class="form-control" id="code" name="security_code" placeholder="Security code..." required>
 		    </div>
 		  </div>
 
@@ -217,7 +217,7 @@
 	        <div class="col-sm-9" style="padding-left: 5px;">
 	          <div class="row">
 	            <div class="col-xs-3">
-	              <select class="form-control col-sm-2" name="expiry_month" id="expiry-month">
+	              <select class="form-control col-sm-2" name="expiry_month" id="expiry-month" required>
 	                <option>Month</option>
 	                <option value="01">Jan (01)</option>
 	                <option value="02">Feb (02)</option>
@@ -234,7 +234,7 @@
 	              </select>
 	            </div>
 	            <div class="col-xs-3">
-	              <select class="form-control" name="expiry_year">
+	              <select class="form-control" name="expiry_year" required>
 	                <option value="13">2013</option>
 	                <option value="14">2014</option>
 	                <option value="15">2015</option>
