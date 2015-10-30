@@ -3,44 +3,45 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Shipping and Billing</title>
-        <style type="text/css">
+    <?php $this->load->view('partials/meta'); ?>
+    <style type="text/css">
 
-            .jumbotron, .navbar {
-                background-color: white;
-                border: 1px solid e7e7e7;
-            }
-		
-          .form-horizontal input {
-          	width: 350px;
-          }
+        .jumbotron, .navbar {
+            background-color: white;
+            border: 1px solid e7e7e7;
+        }
 
-            .form-cc input{
-            	width: 350px;
-            }
+      .form-horizontal input {
+        width: 350px;
+      }
 
-            .btn-default{
-            	background: #8AC8FF;
-            	color: #ffffff;
-            	position: relative;
-            }
+        .form-cc input{
+            width: 350px;
+        }
 
-            #continue{
-            	color: white;
-            }
-            #total{
-            	text-align: right;
-            }
-            #pay{
-            	width: 80px;
-            	margin-top: 20px;
-            	margin-right: 400px;
-            }
+        .btn-default{
+            background: #8AC8FF;
+            color: #ffffff;
+            position: relative;
+        }
 
-            form{
-            	width: 80%;
-            }
+        #continue{
+            color: white;
+        }
+        #total{
+            text-align: right;
+        }
+        #pay{
+            width: 80px;
+            margin-top: 20px;
+            margin-right: 400px;
+        }
 
-        </style>
+        form{
+            width: 80%;
+        }
+
+    </style>
 	<script>
 		function sameAsShipping(){
 			if($('#sameas').is(":checked")){

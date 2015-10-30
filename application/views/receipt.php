@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<?php         $this->session->set_userdata('cart_amount', 0) ?>
+<?php $this->session->set_userdata('cart_amount', 0) ?>
+
 <html>
 	<head>
 		<title>Receipt</title>
 		<meta charset="UTF-8">
-    
+        <?php $this->load->view('partials/meta'); ?>
         <style type="text/css">
-            
-            .navbar {
-                background-color: white;  
-            }
-            
             h1 {
                 font-size: 150%;
             }
@@ -76,30 +72,30 @@
             <p>If you have any questions about anything, please don't hesitate to ask!</p>
 			<div class="panel panel-default">
 				<div class="panel-heading">Products</div>
-					<table class="table">
-						<thead>
-							<th class="head">ITEM</th>
-							<th class="head">PRICE</th>
-							<th class="head">QUANTITY</th>
-							<th class="head">TOTAL</th>
-						</thead>
-						<tbody>
-							<?php foreach($products as $product){ ?>
-								<tr>
-									<td><?= $product['name'] ?></td>
-									<td class="price">$<?= $product['price']?></td>
-									<td class="amount"><?= $product[0]['amount']?></td>
-									<td class="total">$<?= $product['price']*$product[0]['amount'] ?></td>
-								</tr>
-							<?php } ?>
-								<tr>
-									<td></td>
-									<td></td>
-									<td id="total"><b>Total</b></td>
-									<td class="total">$<?= $total ?></td>
-								</tr>
-						</tbody>
-					</table>
+                <table class="table">
+                    <thead>
+                        <th class="head">ITEM</th>
+                        <th class="head">PRICE</th>
+                        <th class="head">QUANTITY</th>
+                        <th class="head">TOTAL</th>
+                    </thead>
+                    <tbody>
+                        <?php foreach($products as $product){ ?>
+                            <tr>
+                                <td><?= $product['name'] ?></td>
+                                <td class="price">$<?= $product['price']?></td>
+                                <td class="amount"><?= $product[0]['amount']?></td>
+                                <td class="total">$<?= $product['price']*$product[0]['amount'] ?></td>
+                            </tr>
+                        <?php } ?>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td id="total"><b>Total</b></td>
+                            <td class="total">$<?= $total ?></td>
+                        </tr>
+                    </tbody>
+                </table>
 			</div>
         </div> 
     </body>

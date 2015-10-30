@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<title>All Products</title>
-		<meta charset="UTF-8">   
+		<meta charset="UTF-8">  
+        <?php $this->load->view('partials/meta'); ?>
         <style type="text/css">
-            
             .navbar {
                 background-color: white;  
             }
@@ -12,7 +12,6 @@
             h1 {
                 font-size: 150%;
             }
-
         </style>
 	</head>
 	<body> 
@@ -44,13 +43,11 @@
                 </tr>
                 <?php } ?>
             </table>
-
             <nav>
                 <ul class="pagination">
                     <?= $links ?>
                 </ul>
             </nav>
-
         </div> 
     </body>
 </html>

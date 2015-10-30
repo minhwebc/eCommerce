@@ -3,9 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
         <title>All Orders</title>
-
+        <?php $this->load->view('partials/meta'); ?>
         <script>
-            
             $( document ).ready(function() {
                 
                 $("select").change(function(){                 
@@ -19,10 +18,8 @@
                 });
                 
             });
-            
         </script>      
         <style type="text/css">
-            
             .navbar {
                 background-color: white;  
             }
@@ -30,7 +27,6 @@
             h1 {
                 font-size: 150%;
             }
-
         </style>
 	</head>
 	<body> 
@@ -74,7 +70,7 @@
                                         echo "selected = 'selected'"; } ?> value="process">Processing</option>
                                 <option <?php if($order->status == 'shipped'){
                                         echo "selected = 'selected'"; } ?> value="shipped">Shipped</option>
-                                <option <?php if($order->status == 'Cancelled'){
+                                <option <?php if($order->status == 'cancelled'){
                                         echo "selected = 'selected'"; } ?> value="cancelled">Cancelled</option
                             </select>
                             <input type='hidden' name='status' value=<?= $status?>>

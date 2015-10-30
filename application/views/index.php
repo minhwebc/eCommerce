@@ -3,13 +3,8 @@
 	<head>
 		<title>Home</title>
 		<meta charset="UTF-8">
+        <?php $this->load->view('partials/meta'); ?>
         <style type="text/css">
-
-            .jumbotron, .navbar {
-                background-color: white;
-                border: 1px solid e7e7e7;
-            }
-            
             .sort_controls {
                 margin: 25px 0px;
                 vertical-align:top;
@@ -27,9 +22,7 @@
             #img {
                 text-align: center;
                 margin-bottom: 20px;
-            }
-
-            
+            }  
         </style>
 	</head>
 	<body>     

@@ -3,8 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cart</title>
+    <?php $this->load->view('partials/meta'); ?>
     
     <script>
+        
         $( document ).ready(function() {
             $("select").change(function(){                 
                $(this).parent().children().last().val($(this).val() 
