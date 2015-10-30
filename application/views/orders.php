@@ -78,7 +78,6 @@
                     </tr>
                 <?php } ?>
             </table>
-
             <nav>
                 <ul class="pagination">
                     <?= $links ?>
