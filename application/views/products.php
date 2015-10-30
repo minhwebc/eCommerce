@@ -36,7 +36,7 @@
                 <?php foreach($results as $product){ ?>
                 <tr>
                     <td><?= $product->id ?></td>
-                    <td><?= $product->name ?></a></td>
+                    <td><?= $product->product_name ?></a></td>
                     <td><?= $product->price ?></td>
                     <td><?= $product->inventory_count ?></td>
                     <td><?= $product->quantity_sold ?></td>

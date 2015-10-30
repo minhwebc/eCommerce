@@ -62,16 +62,16 @@
  		<div class="form-group">
     		<label for="description" class="col-sm-2 control-label">Description: </label>
     		<div class="col-sm-10">
-      			<textarea class="form-control"  rows ="5" name='description' id="prod_text" value="<?= $product['description'] ?>"></textarea>
+      			<textarea class="form-control"  rows ="5" name='description' id="prod_text" > <?= $product['description'] ?> </textarea>
    			</div>
   		</div>
 
 			<div class="form-group">
 			  <label for="sell">Select list:</label>
 			  <select class="form-control" id="sell">
-			    <option>Food</option>
-			    <option>Seasonal</option>
-			    <option>Bills</option>
+			    <?php foreach($cat_results as $cat_result){?>
+          <option value = "<?= $cat_result['id']?>"><?= $cat_result['name']?></option>
+         <?php }?>
 			  </select>
 			</div>
 

@@ -53,10 +53,10 @@
                 <h3>Categories</h3>
                 <table>
                     <tr>
-                        <td><a href='/products/stickers/seasonal'>Seasonal (2)</a></td>
-                        <td><a href='/products/stickers/food'>Food (4)</a></td>
-                        <td><a href='/products/stickers/reminders'>Reminders (4)</a></td>
-                        <td><a href='/products/stickers/other'>Other (2)</a></td>
+                        <td><a href='/products/stickers/seasonal'>Seasonal</a></td>
+                        <td><a href='/products/stickers/food'>Food</a></td>
+                        <td><a href='/products/stickers/reminders'>Reminders</a></td>
+                        <td><a href='/products/stickers/other'>Other</a></td>
                     </tr>
                 </table>
             </div>

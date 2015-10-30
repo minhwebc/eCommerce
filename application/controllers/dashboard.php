@@ -69,8 +69,10 @@ class dashboard extends CI_Controller {
  
     public function edit($id){
         $product = $this->product->get_one($id);
+        $cat_results=$this->product->get_categories();
         $this->load->view("edit", array(
-                "product" => $product
+                "product" => $product,
+                "cat_results" =>$cat_results
         ));
     }
 

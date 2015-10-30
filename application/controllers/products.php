@@ -159,7 +159,7 @@ class products extends CI_Controller {
             $item = array('name'  => $info['name'],
                         'price'   => $info['price'],
                         'amount'  => $product['amount'],
-                        'id'      => $info['id'],
+                        'id'      => $info['product_id'],
                         'source'  => $info['source']);
             array_push($items, $item);
         }

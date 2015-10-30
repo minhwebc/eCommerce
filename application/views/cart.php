@@ -116,8 +116,7 @@
                             if($this->session->flashdata('newProduct')['id'] == $item['id']){ ?>
                         <p id="success"><i class="fa fa-check"></i>Item quantity succesfully changed!</p>
                     <?php }} ?>    
-                    
-                    
+                             
                     <p class="remove"><a href="/products/remove_from_cart/<?= $item['id'] ?>">Remove</a></p>
                 </div>
             </div>

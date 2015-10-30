@@ -86,7 +86,8 @@
                             </div>   
                         <?php }else{ ?>
                             <input type="hidden" name="name" value="<?= $product['name'] ?>">
-                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                            <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
+                            <button id="addToCart" type="submit" class="btn btn-default">Add to Cart</button>
                         <?php } ?>
                     </form>
                 </div>

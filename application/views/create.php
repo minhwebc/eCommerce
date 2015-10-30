@@ -52,6 +52,7 @@
 
 			<div class="form-group">
 			  <label for="sell">Select list:</label>
+        <div class="col-sm-6">
 			  <select name ="category" class="form-control" id="sell">
           <?php foreach($cat_results as $cat_result){?>
 			    <option value = "<?= $cat_result['id']?>"><?= $cat_result['name']?></option>
@@ -61,7 +62,6 @@
 
 		<div class="form-group">
     		<label for="name" class="col-sm-2 control-label">or add a new category: </label>
-    		<div class="col-sm-6">
       			<input type="text" name ="category_new" class="form-control" id="prod_name" placeholder="New category....">
     		</div>
   		</div>

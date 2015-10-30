@@ -92,6 +92,7 @@ class product extends CI_model {
 
     function get_products_by_limit($limit, $start, $type){
         $this->db->limit($limit, $start);
+        $this->db->select ('products.id, images.source');
         $this->db->from('products');
         $this->db->join('images', 'images.product_id = products.id');
         $this->db->join('categorization', 'categorization.product_id = products.id');
@@ -113,8 +114,11 @@ class product extends CI_model {
     
     function get_all_products_by_limit($limit, $start){
         $this->db->limit($limit, $start);
+        $this->db->select ('products.id, products.name as product_name, products.quantity_sold, products.description, products.price, products.inventory_count, categories.name');
         $this->db->from('products');
         $this->db->join('images', 'images.product_id = products.id');
+        $this->db->join('categorization', 'categorization.product_id = products.id');
+        $this->db->join('categories', 'categorization.category_id = categories.id');
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
@@ -138,7 +142,7 @@ class product extends CI_model {
     public function create($post){
          // var_dump($post);
          // die();
-        $query = "INSERT INTO products (name, price, description, inventory_count, created_at, updated_at) VALUES (?,?,?,?, NOW(),NOW())";
+        $query = "INSERT INTO products (name, price, description, inventory_count, quantity_sold, created_at, updated_at) VALUES (?,?,?,?,0, NOW(),NOW())";
         $values = array($post["name"], $post["price"], $post["description"], $post["inventory_count"]);
         $this->db->query($query,$values);
         return $this->db->query("select MAX(id) AS id FROM products")->row_array(); 
@@ -150,8 +154,7 @@ class product extends CI_model {
         // var_dump($post);
         //  die();
         if ($this->input->post('category_new') == null) {
-            $query ="SELECT id FROM categories WHERE name = {$post['category']}";
-            $id=$this->db->query($query, $id)->row_array();
+            $id = $post['category'];
         } else {
             $query = "INSERT INTO categories (name, created_at, updated_at) VALUES (?, NOW(), NOW())";           
             $values = array($post["category_new"]);
