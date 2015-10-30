@@ -61,40 +61,35 @@
 
  		<div class="form-group">
     		<label for="description" class="col-sm-2 control-label">Description: </label>
-    		<div class="col-sm-10">
+    		<div class="col-sm-4">
       			<textarea class="form-control"  rows ="5" name='description' id="prod_text" > <?= $product['description'] ?> </textarea>
    			</div>
   		</div>
 
-			<div class="form-group">
-			  <label for="sell">Select list:</label>
+			
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Inventory Count </label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control"  name='inventory' id="prod_name"  value ="<?= $product['inventory_count'] ?>">
+        </div>
+      </div>
+
+      <div class="form-group"> 
+      <div class="col-sm-5 col-sm-offset-2"> 
+        <label for="sell">Select list:</label>
 			  <select class="form-control" id="sell">
 			    <?php foreach($cat_results as $cat_result){?>
           <option value = "<?= $cat_result['id']?>"><?= $cat_result['name']?></option>
          <?php }?>
 			  </select>
-			</div>
-
-		<div class="form-group">
-    		<label for="name" class="col-sm-2 control-label">or add a new category:</label>
-    		<div class="col-sm-10">
-      			<input type="text" class="form-control" id="prod_name" placeholder="New category....">
-    		</div>
-  		</div>
-
-    <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">Inventory Count </label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control"  name='inventory' id="prod_name"  value ="<?= $product['inventory_count'] ?>">
-        </div>
-      </div>
-
+			</div><br>
 
   		<div class="form-group">
-    		<label for="exampleInputFile">Images</label>
-   		 	<input type="file" id="exampleInputFile">
-			
-			<input type="submit" value="Update">
+        <div class="col-sm-5 col-sm-offset-2">
+    		<br><label for="exampleInputFile">Images</label>
+   		 	<input type="file" id="exampleInputFile"><br>
+			  <div class="col-sm-2 col-sm-offset-2">
+			  <input type="submit" value="Update">
 		</div>
 		</form>
 
