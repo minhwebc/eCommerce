@@ -10,7 +10,7 @@ class products extends CI_Controller {
         $this->load->model('product');
         $this->load->library('pagination');
         
-        if ($this->session->erdata('style') == NULL) {
+        if ($this->session->userdata('style') == NULL) {
             $this->session->set_userdata('style', 0);   
         }
         
