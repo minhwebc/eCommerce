@@ -7,11 +7,10 @@ class products extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->output->enable_profiler();
         $this->load->model('product');
         $this->load->library('pagination');
         
-        if ($this->session->userdata('style') == NULL) {
+        if ($this->session->erdata('style') == NULL) {
             $this->session->set_userdata('style', 0);   
         }
         
